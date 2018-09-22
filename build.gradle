@@ -1,0 +1,48 @@
+apply plugin: 'java'
+apply plugin: 'eclipse-wtp'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+apply plugin: 'idea'
+apply plugin: 'war'
+
+buildscript {
+    ext {
+        springBootVersion = '2.0.5.RELEASE'
+        swaggerVersion = '2.8.0'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+group = 'de.kontextwork'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 10
+
+repositories {
+    mavenCentral()
+}
+
+configurations {
+    providedRuntime
+}
+
+dependencies {
+    compile 'org.jodconverter:jodconverter-local:4.2.0'
+    compile 'org.jodconverter:jodconverter-spring-boot-starter:4.2.0'
+    compile 'org.springframework.boot:spring-boot-starter-web'
+    compile "io.springfox:springfox-swagger2:$swaggerVersion"
+    compile "io.springfox:springfox-swagger-ui:$swaggerVersion"
+    compileOnly 'org.projectlombok:lombok'
+    providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+    testCompile 'org.springframework.boot:spring-boot-starter-test'
+    // including 5.1.0 for now since 5.0.9 has the "Illegal reflection warning" with Java 10
+    // we should remove this when springBoot is upgraded to that release
+    compile 'org.springframework:spring-core:5.1.0.RELEASE'
+    // needed when compiling against > Java 8 since jaxb is no longer included
+    // you would get Error creating bean with name 'xmlModelPlugin': Lookup method resolution failed
+    compile 'org.glassfish.jaxb:jaxb-runtime:2.3.0.1'
+}

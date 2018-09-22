@@ -1,0 +1,20 @@
+server:
+  port: 8080
+
+spring:
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 10MB
+  application:
+    name: Converter
+
+jodconverter:
+  local:
+    enabled: true
+    port-numbers: 2002, 2003
+    #working-dir: /tmp/jodconverter
+
+logging:
+  level:
+    org.jodconverter: debug

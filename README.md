@@ -12,6 +12,9 @@ You can use this project as is using docker with `eugenmayer/kontextwork-convert
 local java build, when you have all the build tools present + libreoffice locally installed
 
     ./gradlew build
+    # you find the artifact in builds/libs/*-SNAPSHOT.war
+    # the war file is a full tomcat bundled app, so just start it like that
+    java -jar build/libs/converter-0.0.1-SNAPSHOT.war
 
 
 or better use the docker image with all included, no dev tools/LO needed locally

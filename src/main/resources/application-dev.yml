@@ -1,0 +1,8 @@
+---
+spring:
+  profiles:
+    active: dev
+
+logging:
+  level:
+    org.jodconverter: debug

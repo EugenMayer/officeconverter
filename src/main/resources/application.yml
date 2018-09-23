@@ -2,19 +2,23 @@ server:
   port: 8080
 
 spring:
+  profiles:
+    active: dev, swagger
   servlet:
     multipart:
       max-file-size: 5MB
       max-request-size: 10MB
   application:
     name: Converter
+  main:
+    banner-mode: "off"
 
 jodconverter:
   local:
     enabled: true
-    port-numbers: 2002, 2003
+    port-numbers: 2002
     #working-dir: /tmp/jodconverter
 
 logging:
   level:
-    org.jodconverter: debug
+    org.jodconverter: info

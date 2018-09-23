@@ -23,16 +23,16 @@ import java.io.IOException;
 public class ConversionRestController {
 
     @Autowired
-    private ConverterService conversionService;
+    private ConverterService converterService;
 
     @RequestMapping(path = "/", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
     public ResponseEntity<?> convert(@RequestParam(name="format", defaultValue = "pdf") final String targetFormatExt, @RequestParam("data") final MultipartFile inputMultipartFile) throws IOException, OfficeException {
-        if (!conversionService.validateFormat(targetFormatExt)) {
+        if (!converterService.validateFormat(targetFormatExt)) {
             return ResponseEntity.status(HttpStatus.PRECONDITION_FAILED).build();
         }
 
         final DocumentFormat targetFormat = DefaultDocumentFormatRegistry.getFormatByExtension(targetFormatExt);
-        ByteArrayOutputStream convertedFile = conversionService.doConvert(targetFormat, inputMultipartFile.getInputStream(), inputMultipartFile.getName());
+        ByteArrayOutputStream convertedFile = converterService.doConvert(targetFormat, inputMultipartFile.getInputStream(), inputMultipartFile.getName());
 
         final HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.parseMediaType(targetFormat.getMediaType()));

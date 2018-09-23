@@ -6,11 +6,11 @@ RUN apt-get update \
 COPY . /src
 WORKDIR /src
 # development build..with swagger and so on
-RUN gradle build \
+RUN SPRING_PROFILES_ACTIVE=dev gradle clean build \
   && cp build/libs/*SNAPSHOT.war /dist/development.war
 
 # production build
-RUN gradle build \
+RUN SPRING_PROFILES_ACTIVE=prod gradle clean build \
   && cp build/libs/*SNAPSHOT.war /dist/production.war
 
 

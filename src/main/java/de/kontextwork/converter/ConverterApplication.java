@@ -24,10 +24,10 @@ public class ConverterApplication {
 
     @Configuration
     @EnableSwagger2
+    @Profile("swagger")
     public class SwaggerConfig {
         @Bean
-        @Profile("development")
-        public Docket developmentApi() {
+        public Docket api() {
             return new Docket(DocumentationType.SWAGGER_2)
                     .useDefaultResponseMessages(false)
                     .select()
@@ -35,12 +35,6 @@ public class ConverterApplication {
                     .paths(PathSelectors.regex("/conversion/.*"))
                     .build()
                     .apiInfo(apiInfo());
-        }
-
-        @Bean
-        @Profile("production")
-        public Docket productionApi() {
-            return this.developmentApi().enable(false);
         }
 
         private ApiInfo apiInfo() {

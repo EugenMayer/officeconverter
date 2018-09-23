@@ -1,5 +1,7 @@
 ## WAT
 
+IT'S WIP - yet not finished. This README does promise more then actually is finished :)
+
 Offers a REST service to convert files like PDF, docx,xlx .. odt .. you get it.. to other formats like pdf, png, doc, pdt, html.
 This project is basically an extended version of [jodconverter-sample-rest](https://github.com/sbraconnier/jodconverter/tree/master/jodconverter-samples/jodconverter-sample-rest)
 
@@ -7,8 +9,23 @@ You can use this project as is using docker with `eugenmayer/kontextwork-convert
 
 ## build
 
-    gradle build
+local java build, when you have all the build tools present + libreoffice locally installed
 
+    ./gradlew build
+
+
+or better use the docker image with all included, no dev tools/LO needed locally
+    
+    # this builds the source a
+    make build
+
+    make start-prod # or `make start` for the variant with swagger
+    
+    # alternativly
+    docker run --name converter-prod --rm -p 8080:8080 eugenmayer/converter:production
+    # or dev mode with swagger
+    docker run --name converter-dev --rm -p 8080:8080 eugenmayer/converter:development
+    
 ## REST endpoints
 
 Start the project and access `http://localhost:8080/swagger-ui.html` to browse, inspect and try the REST endpoints.

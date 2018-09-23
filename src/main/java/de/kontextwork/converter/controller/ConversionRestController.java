@@ -32,7 +32,7 @@ public class ConversionRestController {
         }
 
         final DocumentFormat targetFormat = DefaultDocumentFormatRegistry.getFormatByExtension(targetFormatExt);
-        ByteArrayOutputStream convertedFile = converterService.doConvert(targetFormat, inputMultipartFile.getInputStream(), inputMultipartFile.getName());
+        ByteArrayOutputStream convertedFile = converterService.doConvert(targetFormat, inputMultipartFile.getInputStream(), inputMultipartFile.getOriginalFilename());
 
         final HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.parseMediaType(targetFormat.getMediaType()));

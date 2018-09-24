@@ -32,7 +32,10 @@ configurations {
 }
 
 dependencies {
+
     compile 'org.jodconverter:jodconverter-local:4.2.0'
+    // our own patched version for images embedded into HTML
+    compile files('libs/jodconverter-core-4.2.1-SNAPSHOT.jar')
     compile 'org.jodconverter:jodconverter-spring-boot-starter:4.2.0'
     compile 'org.springframework.boot:spring-boot-starter-web'
     compile "io.springfox:springfox-swagger2:$swaggerVersion"

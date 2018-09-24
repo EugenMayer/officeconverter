@@ -25,9 +25,9 @@ or better use the docker image with all included, no dev tools/LO needed locally
     make start-prod # or `make start` for the variant with swagger
     
     # alternativly
-    docker run --memory 512m --name converter-prod --rm -p 8080:8080 eugenmayer/converter:production
+    docker run --memory 512m --name converter-prod --rm -p 8080:8080 eugenmayer/kontextwork-converter:production
     # or dev mode with swagger
-    docker run --memory 512m --name converter-dev --rm -p 8080:8080 eugenmayer/converter:development
+    docker run --memory 512m --name converter-dev --rm -p 8080:8080 eugenmayer/kontextwork-converter:development
     
 ## REST endpoints
 

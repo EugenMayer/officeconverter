@@ -33,6 +33,24 @@ or better use the docker image with all included, no dev tools/LO needed locally
 
 Start the project and access `http://localhost:8080/swagger-ui.html` to browse, inspect and try the REST endpoints.
 You find all the docs there.
+
+
+### Configuration
+
+You can configure the docker images by mounting `/etc/app/application.properties` and put whatever you like into them.
+
+For example if you like to have 2 LibreOffice instances, you would put into the file
+
+```properties
+jodconverter.local.port-numbers: 2002, 2003
+# change the tmp folder
+jodconverter.local.working-dir: /tmp
+# change upload sizes
+spring.servlet.multipart.max-file-size: 5MB
+spring.servlet.multipart.max-request-size: 5MB
+# change the server port (where the REST app is listenting
+server.port=8090
+```
  
 ## internals
 

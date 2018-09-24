@@ -42,6 +42,7 @@ You can configure the docker images by mounting `/etc/app/application.properties
 For example if you like to have 2 LibreOffice instances, you would put into the file
 
 ```properties
+# amount of libreOffice instances to start - one for each given port. So this means 2
 jodconverter.local.port-numbers: 2002, 2003
 # change the tmp folder
 jodconverter.local.working-dir: /tmp

@@ -29,6 +29,8 @@ or better use the docker image with all included, no dev tools/LO needed locally
     # or dev mode with swagger and a debugger on 5001
     docker run --memory 512m --name converter-dev --rm -p 5001:5001 -p 8080:8080 eugenmayer/kontextwork-converter:development
 
+You can no connect to the 5001 remote debugger port, just use the existing IntelliJ Task if you like
+
 ## Development 
 
 You can either use the IDE task or the local gradle

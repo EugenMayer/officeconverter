@@ -1,0 +1,15 @@
+version: "2"
+
+services:
+  app:
+    container_name: converter-dev
+    image: eugenmayer/kontextwork-converter:development
+    working_dir: /src
+    entrypoint: ./gradlew
+    command: -Pdev bootRun
+    volumes:
+      - ./:/src
+    ports:
+      - 5001:5001
+      - 8080:8080
+    mem_limit: 512M

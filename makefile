@@ -7,6 +7,12 @@ push:
 	docker push eugenmayer/kontextwork-converter:development
 	docker push eugenmayer/kontextwork-converter:production
 
+start-src: stop
+	./start.sh
+
+watch:
+	./watch.sh
+
 start: stop
     # 5001 is the remote debugger port, which we enable by default
 	docker run -m 512m --name converter-dev --rm -p 5001:5001 -p 8080:8080 eugenmayer/kontextwork-converter:development

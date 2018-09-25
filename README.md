@@ -7,7 +7,7 @@ This project is basically an extended version of [jodconverter-sample-rest](http
 
 You can use this project as is using docker with `eugenmayer/kontextwork-converter` or build it here yourself.
 
-## build
+## Build
 
 local java build, when you have all the build tools present + libreoffice locally installed
 
@@ -29,14 +29,30 @@ or better use the docker image with all included, no dev tools/LO needed locally
     # or dev mode with swagger and a debugger on 5001
     docker run --memory 512m --name converter-dev --rm -p 5001:5001 -p 8080:8080 eugenmayer/kontextwork-converter:development
 
+## Development 
+
+You can either use the IDE task or the local gradle
+
+    ./gradlew -Pdev bootRun
+    
+Or even better, use the development container. You will not need any LibreOffice/Gradle installed locally
+
+     make start-src # basically just docker-compose up
+         
+This fires up a docker container, mounts your source. To auto-rebuild and auto-restart he app very quick do this
+
+     make watch
+     # or just run ./watch.sh localy
+              
 ## Debugging
 
 Of course you can just start using your IDE and debug that, but if you want to debug inside the docker container
 
     make start
     
-And now connect(attach) to localhost 8000 for debugging `eugenmayer/kontextwork-converter:development` has a default remote
-debugging port enabled on 8000
+And now connect(attach) to localhost 5001 for debugging `eugenmayer/kontextwork-converter:development` has a default remote
+debugging port enabled on 5001
+
 ## REST endpoints
 
 Start the project and access `http://localhost:8080/swagger-ui.html` to browse, inspect and try the REST endpoints.

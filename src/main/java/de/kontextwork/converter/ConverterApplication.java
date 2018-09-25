@@ -22,31 +22,4 @@ public class ConverterApplication {
         SpringApplication.run(ConverterApplication.class, args);
     }
 
-    @Configuration
-    @EnableSwagger2
-    @Profile("swagger")
-    public class SwaggerConfig {
-        @Bean
-        public Docket api() {
-            return new Docket(DocumentationType.SWAGGER_2)
-                    .useDefaultResponseMessages(false)
-                    .select()
-                    .apis(RequestHandlerSelectors.basePackage("de.kontextwork.converter"))
-                    .paths(PathSelectors.regex("/conversion/.*"))
-                    .build()
-                    .apiInfo(apiInfo());
-        }
-
-        private ApiInfo apiInfo() {
-            return new ApiInfo(
-                    "Conversion REST API",
-                    "Conversion REST API for Online conversion. Automates conversions between office document formats using JODconverter, LibreOffice or Apache OpenOffice.",
-                    "0.1",
-                    "Terms of service",
-                    new Contact("No", "kontextwork.de", "no@kontextwork.de"),
-                    "Unknown",
-                    "Unknown",
-                    Collections.emptyList());
-        }
-    }
 }

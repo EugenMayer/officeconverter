@@ -24,8 +24,8 @@ public class ConversionRestController {
 
     @Autowired
     private ConverterService converterService;
-
-    @RequestMapping(path = "", method = RequestMethod.POST, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+    //, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE
+    @RequestMapping(path = "", method = RequestMethod.POST)
     public ResponseEntity<?> convert(@RequestParam(name="format", defaultValue = "pdf") final String targetFormatExt, @RequestParam("data") final MultipartFile inputMultipartFile) throws IOException, OfficeException {
         if (!converterService.validateFormat(targetFormatExt)) {
             return ResponseEntity.status(HttpStatus.PRECONDITION_FAILED).build();
@@ -35,13 +35,9 @@ public class ConversionRestController {
         ByteArrayOutputStream convertedFile = converterService.doConvert(targetFormat, inputMultipartFile.getInputStream(), inputMultipartFile.getOriginalFilename());
 
         final HttpHeaders headers = new HttpHeaders();
+        String targetFilename = String.format("%s.%s",FilenameUtils.getBaseName(inputMultipartFile.getOriginalFilename()),targetFormat.getExtension());
+        headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + targetFilename );
         headers.setContentType(MediaType.parseMediaType(targetFormat.getMediaType()));
-        headers.add(
-                "Content-Disposition",
-                "attachment; filename="
-                        + FilenameUtils.getBaseName(inputMultipartFile.getOriginalFilename())
-                        + "."
-                        + targetFormat.getExtension());
         return ResponseEntity.ok().headers(headers).body(convertedFile.toByteArray());
     }
 }

@@ -2,6 +2,9 @@ server:
   port: 8080
 
 spring:
+  profiles:
+    # that is our default profile
+    active: prod
   servlet:
     multipart:
       max-file-size: 5MB

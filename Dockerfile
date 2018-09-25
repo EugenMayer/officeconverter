@@ -26,8 +26,8 @@ ENV JAR_FILE_BASEDIR=/opt/app
 ENV LOG_BASE_DIR=/var/log
 COPY --from=builder /dist/development.war ${JAR_FILE_BASEDIR}/${JAR_FILE_NAME}
 EXPOSE 8080
-EXPOSE 8000
-CMD ["java","-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:8000", "-jar","/opt/app/app.war"]
+EXPOSE 5001
+CMD ["java","-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5001", "-jar","/opt/app/app.war"]
 
 # just a trick to ensure that he default docker image resulting is production
 FROM production

@@ -31,6 +31,70 @@ configurations {
     providedRuntime
 }
 
+// ********************** Profile and properties for the JVM handling *************************
+def prodProfiles='prod'
+def devProfiles='dev'
+def testProfiles='test'
+def propertyDrivenProfiles;
+
+// this can be used when starin gradle using -Pdev .. -Pprod
+// we optionally also load a gradle file for each env, if it exists
+if (project.hasProperty('prod')) {
+    // Used for production environment
+    propertyDrivenProfiles = prodProfiles
+    def f = new File ('gradle/profile_prod.gradle')
+    if ( f.exists() ) {
+        apply from: rootProject.file('gradle/profile_prod.gradle');
+    }
+
+} else if (project.hasProperty('dev')) {
+    // Used for local development
+    propertyDrivenProfiles = devProfiles
+    def f = new File ('gradle/profile_dev.gradle')
+    if ( f.exists() ) {
+        apply from: rootProject.file('gradle/profile_dev.gradle');
+    }
+
+} else {
+    // Default when no profile property is specified, used for testing
+    propertyDrivenProfiles = testProfiles
+    def f = new File ('gradle/profile_test.gradle')
+    if ( f.exists() ) {
+        apply from: rootProject.file('gradle/profile_test.gradle');
+    }
+}
+// ********************** Profile and properties for the JVM handling *************************
+
+// // ********************** Spring boot overrides for better profile / debug handling OOTB // ********************** Profile and properties for the JVM handling *************************
+bootRun {
+    // apply the profile we selected for gradle as a spring boot profile
+    systemProperties = [
+            'spring.profiles.active': propertyDrivenProfiles
+    ]
+
+    // on all profiles non being production, expose a debug port by default
+    // this is not needed for IJ, if you start a gradle task using the debug button, it will work regardless
+    def remoteDebugPort = '5001'
+    if (!project.hasProperty('prod')) {
+        bootRun.jvmArgs = ["-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=" + remoteDebugPort]
+    }
+
+    // Use -Pproperty.name=value in addition to a -P profile argument
+    // for each property below to pass database connection properties.
+    //
+    // These will only be used if profile specific property files
+    // do not override them.
+    // They are intended for use with the "prod" profile.
+    ext.applyPropertyIfExists = { propertyKey ->;
+        if(project.hasProperty(propertyKey)) {
+            systemProperties[propertyKey] = project.getProperty(propertyKey)
+        }
+    }
+    applyPropertyIfExists('spring.datasource.url')
+    applyPropertyIfExists('spring.datasource.username')
+    applyPropertyIfExists('spring.datasource.password')
+}
+
 dependencies {
 
     compile 'org.jodconverter:jodconverter-local:4.2.0'
@@ -49,4 +113,6 @@ dependencies {
     // needed when compiling against > Java 8 since jaxb is no longer included
     // you would get Error creating bean with name 'xmlModelPlugin': Lookup method resolution failed
     compile 'org.glassfish.jaxb:jaxb-runtime:2.3.0.1'
+
+    compile("org.springframework.boot:spring-boot-devtools")
 }

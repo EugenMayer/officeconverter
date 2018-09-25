@@ -8,8 +8,8 @@ push:
 	docker push eugenmayer/kontextwork-converter:production
 
 start: stop
-    # 8000 is the remote debugger port, which we enable by default
-	docker run -m 512m --name converter-dev --rm -p 8000:8000 -p 8080:8080 eugenmayer/kontextwork-converter:development
+    # 5001 is the remote debugger port, which we enable by default
+	docker run -m 512m --name converter-dev --rm -p 5001:5001 -p 8080:8080 eugenmayer/kontextwork-converter:development
 
 start-prod: stop
 	docker run -m 512m --name converter-prod --rm -p 8080:8080 eugenmayer/kontextwork-converter:production

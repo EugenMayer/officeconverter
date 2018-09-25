@@ -26,8 +26,8 @@ or better use the docker image with all included, no dev tools/LO needed locally
     
     # alternativly
     docker run --memory 512m --name converter-prod --rm -p 8080:8080 eugenmayer/kontextwork-converter:production
-    # or dev mode with swagger
-    docker run --memory 512m --name converter-dev --rm -p 8080:8080 eugenmayer/kontextwork-converter:development
+    # or dev mode with swagger and a debugger on 5001
+    docker run --memory 512m --name converter-dev --rm -p 5001:5001 -p 8080:8080 eugenmayer/kontextwork-converter:development
 
 ## Debugging
 

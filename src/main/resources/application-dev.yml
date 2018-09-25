@@ -1,9 +1,9 @@
 ---
 spring.profiles: dev
-spring:
-  profiles:
-    include:
-      - swagger
+#spring:
+#  profiles:
+#    include:
+#      - swagger
 
 logging:
   level:

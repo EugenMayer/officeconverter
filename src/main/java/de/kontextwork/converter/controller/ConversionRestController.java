@@ -21,13 +21,13 @@ import java.io.IOException;
 @RestController
 @RequestMapping("/conversion")
 public class ConversionRestController {
-    //, produces = MediaType.APPLICATION_OCTET_STREAM_VALUE
+    // produces = MediaType.APPLICATION_OCTET_STREAM_VALUE
 
     @Autowired
     private ConverterService converterService;
 
     @RequestMapping(path = "", method = RequestMethod.POST)
-    public ResponseEntity<?> convert(@RequestParam(name="format", defaultValue = "pdf") final String targetFormatExt, @RequestParam("data") final MultipartFile inputMultipartFile) throws IOException, OfficeException {
+    public ResponseEntity<?> convert(@RequestParam(name="format", defaultValue = "pdf") final String targetFormatExt, @RequestParam("file") final MultipartFile inputMultipartFile) throws IOException, OfficeException {
         if (!converterService.validateFormat(targetFormatExt)) {
             return ResponseEntity.status(HttpStatus.PRECONDITION_FAILED).build();
         }

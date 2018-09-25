@@ -104,7 +104,8 @@ dependencies {
     compile 'org.springframework.boot:spring-boot-starter-web'
     compile "io.springfox:springfox-swagger2:$swaggerVersion"
     compile "io.springfox:springfox-swagger-ui:$swaggerVersion"
-    compileOnly 'org.projectlombok:lombok'
+    // disabling lombock due to https://github.com/rzwitserloot/lombok/issues/1716
+    //compileOnly 'org.projectlombok:lombok'
     providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
     testCompile 'org.springframework.boot:spring-boot-starter-test'
     // including 5.1.0 for now since 5.0.9 has the "Illegal reflection warning" with Java 10

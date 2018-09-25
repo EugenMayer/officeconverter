@@ -5,6 +5,7 @@ RUN apt-get update \
   && mkdir /dist /src
 COPY . /src
 WORKDIR /src
+# HINT: yet here is no difference in the build of dev / prod. We just use different startup commands later in the docker images
 # development build..with swagger and so on
 RUN SPRING_PROFILES_ACTIVE=dev gradle clean build \
   && cp build/libs/*SNAPSHOT.war /dist/development.war
@@ -27,7 +28,7 @@ ENV LOG_BASE_DIR=/var/log
 COPY --from=builder /dist/development.war ${JAR_FILE_BASEDIR}/${JAR_FILE_NAME}
 EXPOSE 8080
 EXPOSE 5001
-CMD ["java","-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5001", "-jar","/opt/app/app.war"]
+CMD ["java","-Dspring.profiles.active=dev","-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5001", "-jar","/opt/app/app.war"]
 
 # just a trick to ensure that he default docker image resulting is production
 FROM production

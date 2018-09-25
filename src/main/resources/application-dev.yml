@@ -1,7 +1,9 @@
 ---
+spring.profiles: dev
 spring:
   profiles:
-    active: dev,swagger
+    include:
+      - swagger
 
 logging:
   level:

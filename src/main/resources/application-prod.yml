@@ -1,4 +1,2 @@
 ---
-spring:
-  profiles:
-    active: prod
+spring.profiles: prod

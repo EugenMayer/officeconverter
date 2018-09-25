@@ -28,7 +28,15 @@ or better use the docker image with all included, no dev tools/LO needed locally
     docker run --memory 512m --name converter-prod --rm -p 8080:8080 eugenmayer/kontextwork-converter:production
     # or dev mode with swagger
     docker run --memory 512m --name converter-dev --rm -p 8080:8080 eugenmayer/kontextwork-converter:development
+
+## Debugging
+
+Of course you can just start using your IDE and debug that, but if you want to debug inside the docker container
+
+    make start
     
+And now connect(attach) to localhost 8000 for debugging `eugenmayer/kontextwork-converter:development` has a default remote
+debugging port enabled on 8000
 ## REST endpoints
 
 Start the project and access `http://localhost:8080/swagger-ui.html` to browse, inspect and try the REST endpoints.

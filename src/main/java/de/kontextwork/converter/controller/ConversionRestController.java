@@ -28,11 +28,12 @@ public class ConversionRestController {
 
     @RequestMapping(path = "", method = RequestMethod.POST)
     public ResponseEntity<?> convert(@RequestParam(name="format", defaultValue = "pdf") final String targetFormatExt, @RequestParam("file") final MultipartFile inputMultipartFile) throws IOException, OfficeException {
-        if (!converterService.validateFormat(targetFormatExt)) {
+        final DocumentFormat targetFormat = DefaultDocumentFormatRegistry.getFormatByExtension(targetFormatExt);
+
+        if (targetFormat == null) {
             return ResponseEntity.status(HttpStatus.PRECONDITION_FAILED).build();
         }
 
-        final DocumentFormat targetFormat = DefaultDocumentFormatRegistry.getFormatByExtension(targetFormatExt);
         ByteArrayOutputStream convertedFile = converterService.doConvert(targetFormat, inputMultipartFile.getInputStream(), inputMultipartFile.getOriginalFilename());
 
         final HttpHeaders headers = new HttpHeaders();

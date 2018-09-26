@@ -1,17 +1,14 @@
 package de.kontextwork.converter.service;
 
-import de.kontextwork.converter.model.ConversionFormats;
-
 import org.apache.commons.io.FilenameUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import org.jodconverter.DocumentConverter;
 import org.jodconverter.LocalConverter;
 import org.jodconverter.document.DefaultDocumentFormatRegistry;
 import org.jodconverter.document.DocumentFormat;
 import org.jodconverter.office.OfficeException;
 import org.jodconverter.office.OfficeManager;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
@@ -44,14 +41,5 @@ public class ConverterService {
                  .execute();
 
         return outputStream;
-    }
-
-    public Boolean validateFormat(String format) {
-        try {
-            ConversionFormats.valueOf(format);
-            return true;
-        } catch (IllegalArgumentException ex) {
-            return false;
-        }
     }
 }

@@ -17,14 +17,14 @@ RUN SPRING_PROFILES_ACTIVE=prod gradle clean build \
 
 # --------------------------- production image
 FROM eugenmayer/jodconverter:base as production
+ENV JAR_FILE_NAME=app.war
+ENV JAR_FILE_BASEDIR=/opt/app
+ENV LOG_BASE_DIR=/var/log
 COPY --from=builder /dist/production.war ${JAR_FILE_BASEDIR}/${JAR_FILE_NAME}
 EXPOSE 8080
 
 # --------------------------- development image
 FROM production as development
-ENV JAR_FILE_NAME=app.war
-ENV JAR_FILE_BASEDIR=/opt/app
-ENV LOG_BASE_DIR=/var/log
 COPY --from=builder /dist/development.war ${JAR_FILE_BASEDIR}/${JAR_FILE_NAME}
 EXPOSE 8080
 EXPOSE 5001

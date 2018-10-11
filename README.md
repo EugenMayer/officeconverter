@@ -1,8 +1,6 @@
 ## WAT
 
-IT'S WIP - yet not finished. This README does promise more then actually is finished :)
-
-Offers a REST service to convert files like PDF, docx,xlx .. odt .. you get it.. to other formats like pdf, png, doc, pdt, html.
+Offers a (i think production ready) REST service to convert files like PDF, docx,xlx .. odt .. you get it.. to other formats like pdf, png, doc, pdt, html.
 This project is basically an extended version of [jodconverter-sample-rest](https://github.com/sbraconnier/jodconverter/tree/master/jodconverter-samples/jodconverter-sample-rest)
 
 You can use this project as is using docker with `eugenmayer/kontextwork-converter` or build it here yourself.

@@ -1,5 +1,6 @@
 
 build: stop
+	docker pull eugenmayer/jodconverter:base
 	docker build --target development . -t eugenmayer/kontextwork-converter:development
 	docker build --target production . -t eugenmayer/kontextwork-converter:production
 

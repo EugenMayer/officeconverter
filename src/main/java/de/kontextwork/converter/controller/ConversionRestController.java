@@ -18,11 +18,10 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
+@SuppressWarnings({"SpringJavaAutowiredFieldsWarningInspection", "unused"})
 @RestController
 @RequestMapping("/conversion")
 public class ConversionRestController {
-    // produces = MediaType.APPLICATION_OCTET_STREAM_VALUE
-
     @Autowired
     private ConverterService converterService;
 

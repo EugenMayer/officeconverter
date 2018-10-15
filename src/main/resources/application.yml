@@ -7,8 +7,8 @@ spring:
     active: prod
   servlet:
     multipart:
-      max-file-size: 5MB
-      max-request-size: 10MB
+      max-file-size: 20MB
+      max-request-size: 20MB
   application:
     name: Converter
   main:

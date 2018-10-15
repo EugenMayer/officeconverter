@@ -1,0 +1,12 @@
+version: "2"
+
+services:
+  app:
+    container_name: converter-dev
+    image: eugenmayer/kontextwork-converter:production
+    volumes:
+      - ./:/src
+    ports:
+      - 5001:5001
+      - 8080:8080
+    mem_limit: 512M

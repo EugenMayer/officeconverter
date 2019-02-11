@@ -1,22 +1,21 @@
 # ------------------------- builder
-FROM openjdk:10-jdk as builder
+FROM openjdk:11-jdk as builder
 RUN apt-get update \
-  && apt-get -y install gradle \
   && mkdir /dist /src
 COPY . /src
 WORKDIR /src
 # HINT: yet here is no difference in the build of dev / prod. We just use different startup commands later in the docker images
 # development build..with swagger and so on
-RUN SPRING_PROFILES_ACTIVE=dev gradle clean build \
+RUN SPRING_PROFILES_ACTIVE=dev ./gradlew --no-daemon clean build \
   && cp build/libs/*SNAPSHOT.war /dist/development.war
 
 # production build
-RUN SPRING_PROFILES_ACTIVE=prod gradle clean build \
+RUN SPRING_PROFILES_ACTIVE=prod ./gradlew --no-daemon clean build \
   && cp build/libs/*SNAPSHOT.war /dist/production.war
 
 
 # --------------------------- production image
-FROM eugenmayer/jodconverter:base as production
+FROM eugenmayer/jodconverter:base-11 as production
 ENV JAR_FILE_NAME=app.war
 ENV JAR_FILE_BASEDIR=/opt/app
 ENV LOG_BASE_DIR=/var/log

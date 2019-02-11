@@ -1,5 +1,4 @@
 apply plugin: 'java'
-apply plugin: 'eclipse-wtp'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 apply plugin: 'idea'
@@ -7,8 +6,13 @@ apply plugin: 'war'
 
 buildscript {
     ext {
-        springBootVersion = '2.0.5.RELEASE'
-        swaggerVersion = '2.8.0'
+        jodconverterVersion = '4.2.2'
+        springBootVersion = '2.1.2.RELEASE'
+        springCoreVersion = '5.1.4.RELEASE'
+        swaggerVersion = '2.9.2'
+
+        junitVersion = '5.3.2'
+        mockitoVersion = '2.24.0'
     }
     repositories {
         mavenCentral()
@@ -19,9 +23,9 @@ buildscript {
 }
 
 group = 'de.kontextwork'
-version = '0.0.1-SNAPSHOT'
-sourceCompatibility = 10
-targetCompatibility = 10
+version = '0.0.2-SNAPSHOT'
+sourceCompatibility = 11
+targetCompatibility = 11
 
 repositories {
     mavenCentral()
@@ -96,24 +100,24 @@ bootRun {
 }
 
 dependencies {
-
-    compile 'org.jodconverter:jodconverter-local:4.2.0'
-    // our own patched version for images embedded into HTML
-    compile files('libs/jodconverter-core-4.2.1-SNAPSHOT.jar')
-    compile 'org.jodconverter:jodconverter-spring-boot-starter:4.2.0'
-    compile 'org.springframework.boot:spring-boot-starter-web'
-    compile "io.springfox:springfox-swagger2:$swaggerVersion"
-    compile "io.springfox:springfox-swagger-ui:$swaggerVersion"
-    // disabling lombock due to https://github.com/rzwitserloot/lombok/issues/1716
-    //compileOnly 'org.projectlombok:lombok'
+    compile "org.jodconverter:jodconverter-local:$jodconverterVersion"
+    compile "org.jodconverter:jodconverter-spring-boot-starter:$jodconverterVersion"
+    compile "org.springframework.boot:spring-boot-starter-web:$springBootVersion"
+    compileOnly 'org.projectlombok:lombok'
     providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
-    testCompile 'org.springframework.boot:spring-boot-starter-test'
-    // including 5.1.0 for now since 5.0.9 has the "Illegal reflection warning" with Java 10
-    // we should remove this when springBoot is upgraded to that release
-    compile 'org.springframework:spring-core:5.1.0.RELEASE'
+    compile "org.springframework:spring-core:$springCoreVersion"
     // needed when compiling against > Java 8 since jaxb is no longer included
     // you would get Error creating bean with name 'xmlModelPlugin': Lookup method resolution failed
-    compile 'org.glassfish.jaxb:jaxb-runtime:2.3.0.1'
+    compile 'org.glassfish.jaxb:jaxb-runtime:2.3.2'
 
     compile("org.springframework.boot:spring-boot-devtools")
+
+    testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
+    testCompile("org.junit.jupiter:junit-jupiter-params:${junitVersion}")
+    testRuntime("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
+    testCompile("org.mockito:mockito-core:${mockitoVersion}")
+    testCompile("org.mockito:mockito-junit-jupiter:${mockitoVersion}")
+    testImplementation "org.springframework.boot:spring-boot-starter-test:${springBootVersion}"
+    compile "io.springfox:springfox-swagger2:${swaggerVersion}"
+    compile "io.springfox:springfox-swagger-ui:${swaggerVersion}"
 }

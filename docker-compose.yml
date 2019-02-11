@@ -12,4 +12,4 @@ services:
     ports:
       - 5001:5001
       - 8080:8080
-    mem_limit: 512M
+    mem_limit: 1024M

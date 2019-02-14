@@ -15,7 +15,7 @@ RUN SPRING_PROFILES_ACTIVE=prod ./gradlew --no-daemon clean build \
 
 
 # --------------------------- production image
-FROM eugenmayer/jodconverter:base-11 as production
+FROM eugenmayer/jodconverter:base as production
 ENV JAR_FILE_NAME=app.war
 ENV JAR_FILE_BASEDIR=/opt/app
 ENV LOG_BASE_DIR=/var/log

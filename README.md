@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/eugenmayer/officeconverter.svg?branch=master)](https://travis-ci.org/eugenmayer/officeconverter)
+
 ## WAT
 
 Offers a (i think production ready) REST service to convert files like PDF, docx,xlx .. odt .. you get it.. to other formats like pdf, png, doc, pdt, html.

@@ -1,0 +1,16 @@
+language: java
+sudo: required
+
+dist: trusty
+
+matrix:
+  include:
+    - os: linux
+      jdk: openjdk11
+      before_install:
+       - chmod +x ./gradlew
+       - sudo apt-get install libreoffice
+      script:
+       - ./gradlew build
+      after_success:
+       - ./gradlew coveralls

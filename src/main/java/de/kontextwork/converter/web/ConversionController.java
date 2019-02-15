@@ -1,4 +1,4 @@
-package de.kontextwork.converter.controller;
+package de.kontextwork.converter.web;
 
 import de.kontextwork.converter.service.ConverterService;
 import org.apache.commons.io.FilenameUtils;
@@ -21,7 +21,7 @@ import java.io.IOException;
 @SuppressWarnings({"SpringJavaAutowiredFieldsWarningInspection", "unused"})
 @RestController
 @RequestMapping("/conversion")
-public class ConversionRestController {
+public class ConversionController {
     @Autowired
     private ConverterService converterService;
 

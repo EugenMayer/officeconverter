@@ -13,6 +13,7 @@ buildscript {
 
         junitVersion = '5.3.2'
         mockitoVersion = '2.24.0'
+        tikaVersion = '1.20'
     }
     repositories {
         mavenCentral()
@@ -114,6 +115,8 @@ dependencies {
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testCompile("org.junit.jupiter:junit-jupiter-params:${junitVersion}")
+    testCompile "org.apache.tika:tika-parsers:${tikaVersion}"
+
     testRuntime("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
     testCompile("org.mockito:mockito-core:${mockitoVersion}")
     testCompile("org.mockito:mockito-junit-jupiter:${mockitoVersion}")

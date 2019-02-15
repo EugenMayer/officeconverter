@@ -21,6 +21,9 @@ start: stop
 start-prod: stop
 	docker run -m 512m --name converter-prod --rm -p 8080:8080 eugenmayer/kontextwork-converter:production
 
+test:
+	docker run -m 512m --name converter-test --rm -v ${PWD}/.:/src --workdir /src eugenmayer/kontextwork-converter:development ./gradlew test
+
 stop:
 	docker stop --name converter-prod > /dev/null 2>&1 || true
 	docker stop --name converter-dev > /dev/null 2>&1 || true
@@ -30,3 +33,6 @@ build-local:
 
 start-local:
 	SPRING_PROFILES_ACTIVE=dev ./gradlew bootRun
+
+test-local:
+	./gradlew test

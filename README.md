@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/eugenmayer/officeconverter.svg?branch=master)](https://travis-ci.org/eugenmayer/officeconverter)
+[![Build Status](https://travis-ci.org/EugenMayer/officeconverter.svg?branch=master)](https://travis-ci.org/EugenMayer/officeconverter)
 
 ## WAT
 

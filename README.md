@@ -82,6 +82,9 @@ Adjust the `VERSION` and increment the version
 ```bash
 # this will build the docker images, tag the repo and the image and push the repo and the images
 make build tag push
+
+# or
+make release
 ```
 
 

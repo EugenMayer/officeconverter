@@ -1,0 +1,16 @@
+task codeCoverageReport(type: JacocoReport) {
+    executionData fileTree(project.buildDir.absolutePath).include("/jacoco/*.exec")
+    // this file must be included after gradle/tests.gradle if we use a task definition in the executionData
+    // executionData project.tasks.unitTests
+    // executionData project.tasks.itTests
+
+    subprojects.each {
+        sourceSets it.sourceSets.main
+    }
+
+    reports {
+        xml.enabled true
+        html.enabled true
+        csv.enabled false
+    }
+}

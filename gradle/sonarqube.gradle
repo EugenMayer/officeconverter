@@ -1,0 +1,12 @@
+// @see https://docs.sonarqube.org/latest/analysis/scan/sonarscanner-for-gradle/
+// @see https://docs.sonarqube.org/latest/analysis/analysis-parameters/
+sonarqube {
+    properties {
+        property "sonar.projectKey", "officeconverter"
+        property "sonar.host.url", "n/a"
+        property "sonar.junit.reportPaths", "${buildDir}/test-results/unitTests"
+        property "sonar.coverage.jacoco.xmlReportPaths", "${buildDir}/reports/jacoco/codeCoverageReport/codeCoverageReport.xml"
+        property "sonar.verbose", "true"
+        property "sonar.log.level", "DEBUG"
+    }
+}

@@ -1,0 +1,73 @@
+import org.gradle.internal.os.OperatingSystem
+
+test {
+    logger.warn("buildDir: ${project.buildDir.absolutePath}" )
+}
+
+task unitTests(type: Test) {
+    doFirst {
+        systemProperty 'spring.profiles.active', 'unit'
+    }
+    // We need to load the tenants for the tests too
+    useJUnitPlatform {
+        includeTags 'unit'
+    }
+}
+
+
+// unitTest is legacy, remove when we changed the CI and all this and unitTest is no longer used
+task unitTest(dependsOn: unitTests)
+
+task itTests(type: Test) {
+    // this loads the correct configuration
+    doFirst {
+        systemProperty 'spring.profiles.active', 'it'
+    }
+    // We need to load the tenants for the tests too
+    useJUnitPlatform {
+        includeTags 'it'
+    }
+}
+
+task e2eTests(type: Test) {
+    // this loads the correct configuration
+    doFirst {
+        systemProperty 'spring.profiles.active', 'e2e'
+    }
+    // We need to load the tenants for the tests too
+    useJUnitPlatform {
+        includeTags 'e2e'
+    }
+}
+
+tasks.withType(Test).configureEach {
+    if (project.hasProperty('debug')) {
+        jvmArgs = ["-agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=*:5007"]
+    }
+
+    // hide all the refelction access warnings during compile
+    //allow embedded executer to modify environment variables
+    jvmArgs += "--add-opens=java.base/java.util=ALL-UNNAMED"
+    //allow embedded executer to inject legacy types into the system classloader
+    jvmArgs += "--add-opens=java.base/java.lang=ALL-UNNAMED"
+
+    // ****************************************************
+    // ************* speed optimization *******************
+    // ****************************************************
+    jvmArgs += "-noverify"
+
+    // ************************** openj9 only
+    // openj9 only
+    // start quicker
+
+    jvmArgs += "-Xquickstart"
+    // optimize for containers
+    jvmArgs += "-Xtune:virtualized"
+    // use shared cache
+    jvmArgs += "-Xshareclasses:cacheDir=/tmp/cache -XX:SharedCacheHardLimit=200m -Xscmx100m"
+    // ***************************************
+
+    // ****************************************************
+    // ************** / speed optimization/ ***************
+    // ****************************************************
+}

@@ -14,7 +14,7 @@ push:
 
 tag:
 	source ./VERSION && git tag "v$${VERSION}"
-	source ./VERSION && docker tag eugenmayer/kontextwork-converter:production eugenmayer/kontextwork-converter:production:$${VERSION}
+	source ./VERSION && docker tag eugenmayer/kontextwork-converter:production eugenmayer/kontextwork-converter:$${VERSION}
 
 start-src: stop
 	./start.sh

@@ -1,5 +1,5 @@
 # ------------------------- builder
-FROM adoptopenjdk/openjdk11-openj9:debian as builder
+FROM adoptopenjdk/openjdk11:debian as builder
 RUN apt-get update \
   && mkdir /dist /src
 COPY . /src

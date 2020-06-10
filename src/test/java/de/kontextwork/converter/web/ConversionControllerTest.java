@@ -56,6 +56,30 @@ class ConversionControllerTest
   }
 
   @Test
+  @DisplayName("Should convert dotx to html")
+  void convertDotxWorks() throws Exception
+  {
+    var tika = new Tika();
+    Resource testResource = testDotx;
+
+    String mimeType = tika.detect(testResource.getFile());
+    var testFile = new MockMultipartFile("file", testResource.getFilename(), mimeType, testResource.getInputStream());
+
+    var targetFilename = String.format("%s.%s", FilenameUtils.getBaseName(testResource.getFilename()), "html");
+    var targetMimeType = tika.detect(targetFilename); // should be html obviously
+
+    mockMvc
+      .perform(
+        multipart(requestUrl)
+          .file(testFile)
+          .param("format", "html")
+      )
+      .andExpect(status().isOk())
+      .andExpect(header().string("Content-Disposition", "attachment; filename=" + targetFilename))
+      .andExpect(content().contentType(targetMimeType));
+  }
+
+  @Test
   @DisplayName("Should convert docx to html using embedded images")
   void convertToHtmlEmbedsImages() throws Exception
   {

@@ -1,45 +1,56 @@
 package de.kontextwork.converter.service;
 
-import org.apache.commons.io.FilenameUtils;
-import org.jodconverter.DocumentConverter;
-import org.jodconverter.LocalConverter;
-import org.jodconverter.document.DefaultDocumentFormatRegistry;
-import org.jodconverter.document.DocumentFormat;
-import org.jodconverter.office.OfficeException;
-import org.jodconverter.office.OfficeManager;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
+import de.kontextwork.converter.service.api.UnknownSourceFormat;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
+import lombok.RequiredArgsConstructor;
+import org.apache.commons.io.FilenameUtils;
+import org.jodconverter.core.DocumentConverter;
+import org.jodconverter.core.document.DefaultDocumentFormatRegistry;
+import org.jodconverter.core.document.DocumentFormat;
+import org.jodconverter.core.office.OfficeException;
+import org.jodconverter.core.office.OfficeManager;
+import org.jodconverter.local.LocalConverter;
+import org.springframework.stereotype.Service;
 
 @Service
-public class ConverterService {
-    private OfficeManager officeManager;
+@RequiredArgsConstructor
+public class ConverterService
+{
+  private final OfficeManager officeManager;
 
-    @Autowired
-    public ConverterService(final OfficeManager officeManager) {
-        this.officeManager = officeManager;
+  public ByteArrayOutputStream doConvert(
+    final DocumentFormat targetFormat,
+    final InputStream inputFile,
+    String inputFileName
+  ) throws UnknownSourceFormat, OfficeException
+  {
+    ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+
+    final DocumentConverter converter = LocalConverter.builder()
+      .officeManager(officeManager)
+      .build();
+
+    final DocumentFormat sourceFormat = DefaultDocumentFormatRegistry.getFormatByExtension(
+      FilenameUtils.getExtension(inputFileName)
+    );
+
+    if (sourceFormat == null) {
+      throw new UnknownSourceFormat(
+        String.format(
+          "Cannot convert file with extension %s since we cannot find the format in our registry",
+          FilenameUtils.getExtension(inputFileName)
+        )
+      );
     }
 
-    public ByteArrayOutputStream doConvert(final DocumentFormat targetFormat, final InputStream inputFile, String inputFileName) throws OfficeException {
-        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+    // Convert...
+    converter.convert(inputFile)
+      .as(sourceFormat)
+      .to(outputStream)
+      .as(targetFormat)
+      .execute();
 
-        final DocumentConverter converter =
-                LocalConverter.builder()
-                        .officeManager(officeManager)
-                        .build();
-
-        final DocumentFormat sourceFormat = DefaultDocumentFormatRegistry.getFormatByExtension(
-                FilenameUtils.getExtension(inputFileName));
-
-        // Convert...
-        converter.convert(inputFile)
-                 .as(sourceFormat)
-                 .to(outputStream)
-                 .as(targetFormat)
-                 .execute();
-
-        return outputStream;
-    }
+    return outputStream;
+  }
 }

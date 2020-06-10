@@ -31,6 +31,20 @@ or better use the docker image with all included, no dev tools/LO needed locally
 
 You can no connect to the 5001 remote debugger port, just use the existing IntelliJ Task if you like
 
+
+## Tests
+
+You can run the tests locally ( you will need libreoffice installed)
+```bash
+./gradlew itTest
+```
+
+Or in the docker-container
+```bash
+make test
+```
+
+
 ## Development 
 
 You can either use the IDE task or the local gradle

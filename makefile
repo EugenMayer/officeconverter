@@ -22,7 +22,7 @@ start-prod: stop
 	docker run -m 512m --name converter-prod --rm -p 8080:8080 eugenmayer/kontextwork-converter:production
 
 test:
-	docker run -m 512m --name converter-test --rm -v ${PWD}/.:/src --workdir /src eugenmayer/kontextwork-converter:development ./gradlew test
+	docker run -m 512m --name converter-test --rm -v ${PWD}/.:/src --workdir /src eugenmayer/kontextwork-converter:development ./gradlew itTest
 
 stop:
 	docker stop --name converter-prod > /dev/null 2>&1 || true

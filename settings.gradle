@@ -1,1 +1,26 @@
+plugins {
+    // just for us to scan and overview how our builds perform and what they include
+    // @see https://docs.gradle.com/enterprise/gradle-plugin/
+    id "com.gradle.enterprise" version "3.0"
+}
+
 rootProject.name = 'officeconverter'
+
+gradleEnterprise {
+    buildScan {
+        termsOfServiceUrl = 'https://gradle.com/terms-of-service'
+        termsOfServiceAgree = 'yes'
+    }
+}
+
+boolean isCiServer = System.getenv().containsKey("CI")
+
+buildCache {
+    local {
+        // enabled = !isCiServer
+        enabled = true
+        directory = "/tmp/gradle-officeconverter/cache"
+        removeUnusedEntriesAfterDays = 10
+    }
+}
+

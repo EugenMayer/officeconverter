@@ -8,9 +8,12 @@ matrix:
     - os: linux
       jdk: openjdk11
       before_install:
-       - chmod +x ./gradlew
-       - sudo apt-get install libreoffice
+        - chmod +x ./gradlew
+        - sudo apt-get install libreoffice
       script:
-       - ./gradlew build
+        - ./gradlew build
+        - ./gradlew unitTest
+        - ./gradlew itTest
+        - ./gradlew e2eTest
       after_success:
-       - ./gradlew coveralls
+        - ./gradlew coveralls

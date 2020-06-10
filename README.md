@@ -92,7 +92,13 @@ spring.servlet.multipart.max-request-size: 5MB
 # change the server port (where the REST app is listenting
 server.port=8090
 ```
- 
+#### Adding addition document formats
+
+You can edit the [src/resources/document-formats.json](src/resources/document-formats.json) and add new custom formats.
+The original can be found at (https://github.com/sbraconnier/jodconverter/blob/master/jodconverter-core/src/main/resources/document-formats.json)[jodconverter-core].
+
+We already added support for dotx for example.
+
 ## internals
 
  - state of the art springboot 2.x application exposing a classic rest service to convert office document

@@ -111,7 +111,7 @@ server.port=8090
 You can edit the [src/resources/document-formats.json](src/resources/document-formats.json) and add new custom formats.
 The original can be found at (https://github.com/sbraconnier/jodconverter/blob/master/jodconverter-core/src/main/resources/document-formats.json)[jodconverter-core].
 
-We already added support for dotx for example.
+We already added support for dotx/xltx for example.
 
 ## Internals
 

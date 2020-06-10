@@ -1,12 +1,19 @@
 
 build: stop
 	docker pull eugenmayer/jodconverter:base
-	docker build --target development . -t eugenmayer/kontextwork-converter:development
-	docker build --target production . -t eugenmayer/kontextwork-converter:production
+	source ./VERSION && docker build --build-arg VERSION=$${VERSION} --target development . -t eugenmayer/kontextwork-converter:development
+	source ./VERSION && docker build  --build-arg VERSION=$${VERSION} --target production . -t eugenmayer/kontextwork-converter:production
 
 push:
 	docker push eugenmayer/kontextwork-converter:development
 	docker push eugenmayer/kontextwork-converter:production
+	source ./VERSION && eugenmayer/kontextwork-converter:productio:$${VERSION}
+  git push
+  git push --tags
+
+tag:
+  source ./VERSION && git tag v$${VERSION}
+  source ./VERSION && docker tag eugenmayer/kontextwork-converter:productio eugenmayer/kontextwork-converter:productio:$${VERSION}
 
 start-src: stop
 	./start.sh

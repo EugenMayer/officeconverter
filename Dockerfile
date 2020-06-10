@@ -1,17 +1,20 @@
 # ------------------------- builder
 FROM adoptopenjdk/openjdk11:debian as builder
+
+ARG VERSION=0.0.1-snapshot
+
 RUN apt-get update \
   && mkdir /dist /src
 COPY . /src
 WORKDIR /src
 # HINT: yet here is no difference in the build of dev / prod. We just use different startup commands later in the docker images
 # development build..with swagger and so on
-RUN SPRING_PROFILES_ACTIVE=dev ./gradlew --no-daemon clean build \
-  && cp build/libs/*SNAPSHOT.jar /dist/development.jar
+RUN SPRING_PROFILES_ACTIVE=dev ./gradlew -Pversion=$VERSION clean build \
+  && cp /tmp/gradle-officeconverter/build/libs/officeconverter-*.jar /dist/development.jar
 
 # production build
-RUN SPRING_PROFILES_ACTIVE=prod ./gradlew --no-daemon clean build \
-  && cp build/libs/*SNAPSHOT.jar /dist/production.jar
+RUN SPRING_PROFILES_ACTIVE=prod ./gradlew -Pversion=$VERSION clean build \
+  && cp /tmp/gradle-officeconverter/build/libs/officeconverter-*.jar /dist/production.jar
 
 
 # --------------------------- production image

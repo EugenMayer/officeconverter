@@ -89,7 +89,8 @@ sourceSets {
 }
 
 group = 'de.kontextwork'
-version = '0.0.2-SNAPSHOT'
+// this lets us set the version during build using cli -Pversion=1.1.1
+version = "${version}"
 sourceCompatibility = 11
 targetCompatibility = 11
 

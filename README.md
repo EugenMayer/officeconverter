@@ -12,9 +12,9 @@ You can use this project as is using docker with `eugenmayer/kontextwork-convert
 local java build, when you have all the build tools present + libreoffice locally installed
 
     ./gradlew build
-    # you find the artifact in builds/libs/*-SNAPSHOT.war
-    # the war file is a full tomcat bundled app, so just start it like that
-    java -jar build/libs/converter-0.0.1-SNAPSHOT.war
+    # you find the artifact in /tmp/gradle-officeconverter/builds/libs/officeconverter-*.jar
+    # the jar file is a full tomcat bundled app, so just start it like that
+    java -jar /tmp/gradle-officeconverter/build/libs/officeconverter-*.jar
 
 
 or better use the docker image with all included, no dev tools/LO needed locally
@@ -29,12 +29,12 @@ or better use the docker image with all included, no dev tools/LO needed locally
     # or dev mode with swagger and a debugger on 5001
     docker run --memory 512m --name converter-dev --rm -p 5001:5001 -p 8080:8080 eugenmayer/kontextwork-converter:development
 
-You can no connect to the 5001 remote debugger port, just use the existing IntelliJ Task if you like
+You can no connect to the 5001 remote debugger port, just use the existing IntelliJ task if you like
 
 
 ## Tests
 
-You can run the tests locally ( you will need libreoffice installed)
+You can run the tests locally (you will need libreoffice installed)
 ```bash
 ./gradlew itTest
 ```
@@ -75,7 +75,17 @@ Start the project and access `http://localhost:8080/swagger-ui.html` to browse, 
 You find all the docs there.
 
 
-### Configuration
+## Release
+
+Adjust the `VERSION` and increment the version
+
+```bash
+# this will build the docker images, tag the repo and the image and push the repo and the images
+make build tag push
+```
+
+
+## Configuration
 
 You can configure the docker images by mounting `/etc/app/application.properties` and put whatever you like into them.
 
@@ -92,18 +102,19 @@ spring.servlet.multipart.max-request-size: 5MB
 # change the server port (where the REST app is listenting
 server.port=8090
 ```
-#### Adding addition document formats
+
+### Adding addition document formats
 
 You can edit the [src/resources/document-formats.json](src/resources/document-formats.json) and add new custom formats.
 The original can be found at (https://github.com/sbraconnier/jodconverter/blob/master/jodconverter-core/src/main/resources/document-formats.json)[jodconverter-core].
 
 We already added support for dotx for example.
 
-## internals
+## Internals
 
- - state of the art springboot 2.x application exposing a classic rest service to convert office document
- - using [[jodconverter-spring-boot-starter](https://github.com/sbraconnier/jodconverter/tree/master/jodconverter-spring-boot-starter) for wiring jodconverter-local services
- - build on/for Java 10 for better Docker support
+ - state of the art springboot 2.3 application exposing a classic rest service to convert office document
+ - using [jodconverter-spring-boot-starter](https://github.com/sbraconnier/jodconverter/tree/master/jodconverter-spring-boot-starter) for wiring jodconverter-local services
+ - build on/for Java 11 for better Docker support
  
 ## Credits
 

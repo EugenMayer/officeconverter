@@ -4,6 +4,7 @@ import de.kontextwork.converter.testingUtils.profiles.SetupItTest;
 import de.kontextwork.converter.testingUtils.slices.CustomWebMvcWithJpaTestSlice;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.tika.Tika;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -22,12 +23,16 @@ class ConversionControllerTest
   @Value("classpath:testfiles/withpictures.docx")
   private Resource testDocx;
 
+  @Value("classpath:testfiles/template.dotx")
+  private Resource testDotx;
+
   final private String requestUrl = "/conversion";
 
   @Autowired
   private MockMvc mockMvc;
 
   @Test
+  @DisplayName("Should convert docx to html")
   void convertWorks() throws Exception
   {
     var tika = new Tika();
@@ -51,6 +56,7 @@ class ConversionControllerTest
   }
 
   @Test
+  @DisplayName("Should convert docx to html using embedded images")
   void convertToHtmlEmbedsImages() throws Exception
   {
     var tika = new Tika();

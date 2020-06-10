@@ -1,7 +1,5 @@
-import org.gradle.internal.os.OperatingSystem
-
 test {
-    logger.warn("buildDir: ${project.buildDir.absolutePath}" )
+    logger.warn("buildDir: ${project.buildDir.absolutePath}")
 }
 
 task unitTests(type: Test) {
@@ -55,19 +53,4 @@ tasks.withType(Test).configureEach {
     // ************* speed optimization *******************
     // ****************************************************
     jvmArgs += "-noverify"
-
-    // ************************** openj9 only
-    // openj9 only
-    // start quicker
-
-    jvmArgs += "-Xquickstart"
-    // optimize for containers
-    jvmArgs += "-Xtune:virtualized"
-    // use shared cache
-    jvmArgs += "-Xshareclasses:cacheDir=/tmp/cache -XX:SharedCacheHardLimit=200m -Xscmx100m"
-    // ***************************************
-
-    // ****************************************************
-    // ************** / speed optimization/ ***************
-    // ****************************************************
 }

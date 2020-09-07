@@ -118,7 +118,7 @@ dependencies {
 
             // needed when compiling against > Java 8 since jaxb is no longer included
             // you would get Error creating bean with name 'xmlModelPlugin': Lookup method resolution failed
-            'org.glassfish.jaxb:jaxb-runtime:2.3.2'
+            'org.glassfish.jaxb:jaxb-runtime:2.3.3'
     )
 
     testImplementation(

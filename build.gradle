@@ -4,7 +4,7 @@ buildscript {
         jodconverterVersion = '4.3.0'
 
         // @see https://mvnrepository.com/artifact/io.springfox/springfox-swagger2
-        swaggerVersion = '2.9.2'
+        swaggerVersion = '3.0.0'
 
         // @see https://mvnrepository.com/artifact/org.mockito/mockito-core
         mockitoVersion = '3.3.3'

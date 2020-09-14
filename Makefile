@@ -5,7 +5,7 @@ build: stop
 	source ./VERSION && docker build --build-arg VERSION=$${VERSION} --target development . -t eugenmayer/kontextwork-converter:development
 	source ./VERSION && docker build  --build-arg VERSION=$${VERSION} --target production . -t eugenmayer/kontextwork-converter:production
 
-push:
+push: tag
 	docker push eugenmayer/kontextwork-converter:development
 	docker push eugenmayer/kontextwork-converter:production
 	source ./VERSION && docker push eugenmayer/kontextwork-converter:"$${VERSION}"

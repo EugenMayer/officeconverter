@@ -1,7 +1,7 @@
 buildscript {
     ext {
         // @see https://mvnrepository.com/artifact/org.jodconverter/jodconverter-local
-        jodconverterVersion = '4.3.0'
+        jodconverterVersion = '4.4.2'
 
         // @see https://mvnrepository.com/artifact/io.springfox/springfox-swagger2
         swaggerVersion = '3.0.0'

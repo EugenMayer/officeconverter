@@ -39,7 +39,7 @@ plugins {
 
     // much better output during running tests
     // see https://github.com/radarsh/gradle-test-logger-plugin for configuration options
-    id "com.adarshr.test-logger" version "2.1.0"
+    id "com.adarshr.test-logger" version "3.0.0"
 
     // @see https://plugins.gradle.org/plugin/org.sonarqube
     id "org.sonarqube" version "3.0"

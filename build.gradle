@@ -13,7 +13,7 @@ buildscript {
         tikaVersion = '1.25'
 
         // @see https://mvnrepository.com/artifact/org.projectlombok/lombok
-        lombokVersion = '1.18.12'
+        lombokVersion = '1.18.20'
 
         // @see https://mvnrepository.com/artifact/commons-io/commons-io
         commonsIo = '2.8.0'

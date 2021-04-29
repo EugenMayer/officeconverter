@@ -1,0 +1,38 @@
+version: 2
+updates:
+- package-ecosystem: gradle
+  directory: "/"
+  schedule:
+    interval: weekly
+    time: "04:00"
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: org.springframework.boot
+    versions:
+    - 2.4.2
+    - 2.4.3
+    - 2.4.4
+  - dependency-name: org.mockito:mockito-junit-jupiter
+    versions:
+    - 3.7.7
+    - 3.8.0
+  - dependency-name: org.mockito:mockito-core
+    versions:
+    - 3.7.7
+    - 3.8.0
+  - dependency-name: org.projectlombok:lombok
+    versions:
+    - 1.18.16
+    - 1.18.18
+  - dependency-name: org.sonarqube
+    versions:
+    - "3.1"
+  - dependency-name: org.jodconverter:jodconverter-spring-boot-starter
+    versions:
+    - 4.4.0
+  - dependency-name: org.jodconverter:jodconverter-local
+    versions:
+    - 4.4.0
+  - dependency-name: com.adarshr.test-logger
+    versions:
+    - 2.1.1

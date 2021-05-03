@@ -22,7 +22,7 @@ buildscript {
         // @see https://mvnrepository.com/artifact/javax.annotation/javax.annotation-api
         javaxAnnotations = '1.3.2'
 
-        jaxb = "2.3.3"
+        jaxb = "3.0.1"
     }
 }
 

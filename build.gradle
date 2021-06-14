@@ -16,7 +16,7 @@ buildscript {
         lombokVersion = '1.18.12'
 
         // @see https://mvnrepository.com/artifact/commons-io/commons-io
-        commonsIo = '2.8.0'
+        commonsIo = '2.10.0'
 
         // javax.annotation needed when compiling against > Java 8 since it is no longer included
         // @see https://mvnrepository.com/artifact/javax.annotation/javax.annotation-api

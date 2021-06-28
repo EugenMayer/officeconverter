@@ -7,7 +7,7 @@ buildscript {
         swaggerVersion = '3.0.0'
 
         // @see https://mvnrepository.com/artifact/org.mockito/mockito-core
-        mockitoVersion = '3.10.0'
+        mockitoVersion = '3.11.2'
 
         // @see https://mvnrepository.com/artifact/org.apache.tika/tika-parsers
         tikaVersion = '1.25'

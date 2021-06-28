@@ -35,7 +35,7 @@ plugins {
 
     // @see https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web
     // changing that will upgrade spring to the corresponding version
-    id 'org.springframework.boot' version '2.3.5.RELEASE'
+    id 'org.springframework.boot' version '2.5.2'
 
     // much better output during running tests
     // see https://github.com/radarsh/gradle-test-logger-plugin for configuration options

@@ -1,5 +1,27 @@
+task IntelliJ(type: Test) {
+    useJUnitPlatform {}
+
+    testlogger {
+        theme 'plain'
+        showExceptions true
+        showStackTraces true
+        showFullStackTraces false
+        showCauses true
+        showSummary true
+        showSimpleNames false
+        showPassed true
+        showSkipped true
+        showFailed true
+        showStandardStreams true
+        showPassedStandardStreams true
+        showSkippedStandardStreams true
+        showFailedStandardStreams true
+    }
+}
+
 test {
-    logger.warn("buildDir: ${project.buildDir.absolutePath}")
+    minHeapSize = "512m"
+    maxHeapSize = "4069m"
 }
 
 task unitTests(type: Test) {

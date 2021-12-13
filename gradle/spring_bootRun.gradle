@@ -1,15 +1,10 @@
 
 // ********************** Spring boot overrides for better profile / debug handling OOTB ***
 bootRun {
-    // apply the profile we selected for gradle as a spring boot profile
-    systemProperty 'spring.profiles.active', propertyDrivenProfiles
-
-    // on all profiles non being production, expose a debug port by default
     // this is not needed for IJ, if you start a gradle task using the debug button, it will work regardless
-    if (!project.hasProperty('prod')) {
+    if (project.hasProperty('debug')) {
         jvmArgs += "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5006"
     }
-
 
     // hide all the refelction access warnings during compile
     //allow embedded executer to modify environment variables

@@ -23,11 +23,12 @@ public class ConversionController
   @Autowired
   private ConverterService converterService;
 
-  @RequestMapping(path = "", method = RequestMethod.POST)
+  @PostMapping(path = "")
+  @SuppressWarnings("java:S1452")
   public ResponseEntity<?> convert(
     @RequestParam(name = "format", defaultValue = "pdf") final String targetFormatExt,
     @RequestParam("file") final MultipartFile inputMultipartFile
-  ) throws IOException, OfficeException
+  ) throws IOException
   {
     final DocumentFormat conversionTargetFormat = DefaultDocumentFormatRegistry.getFormatByExtension(targetFormatExt);
 

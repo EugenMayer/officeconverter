@@ -1,10 +1,4 @@
 ---
-spring.profiles: dev
-#spring:
-#  profiles:
-#    include:
-#      - swagger
-
 logging:
   level:
     org.jodconverter: debug

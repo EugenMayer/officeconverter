@@ -78,7 +78,7 @@ tasks.withType(JavaCompile) {
 
 // Upgrade log4j due to https://nvd.nist.gov/vuln/detail/CVE-2021-44228
 // can be remove with 2.5.8
-ext['log4j2.version'] = '2.15.0'
+ext['log4j2.version'] = '2.16.0'
 
 // @see https://github.com/sbrannen/spring-events/blob/master/build.gradle#L38
 // and @see https://stackoverflow.com/a/54605523/3625317

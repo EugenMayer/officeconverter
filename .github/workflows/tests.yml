@@ -39,6 +39,6 @@ jobs:
         if: always()
         with:
           name: Maven Tests
-          path: "**/test-results/**/STEST*.xml"
+          path: "**/test-results/**/TEST*.xml"
           reporter: java-junit
           fail-on-error: false

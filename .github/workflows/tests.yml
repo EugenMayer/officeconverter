@@ -19,22 +19,22 @@ jobs:
           java-version: '11'
           distribution: 'adopt'
       - name: Build
-        uses: gradle/gradle-build-action@2.3.0
+        uses: gradle/gradle-build-action@v2
         with:
           arguments: build
       - name: Unit Tests
-        uses: gradle/gradle-build-action@2.3.0
+        uses: gradle/gradle-build-action@v2
         with:
           arguments: unitTest
       - name: IT Tests
-        uses: gradle/gradle-build-action@2.3.0
+        uses: gradle/gradle-build-action@v2
         with:
           arguments: itTests
       - name: E2E Tests
-        uses: gradle/gradle-build-action@2.3.0
+        uses: gradle/gradle-build-action@v2
         with:
           arguments: e2eTests
       - name: E2E Tests
-        uses: gradle/gradle-build-action@2.3.0
+        uses: gradle/gradle-build-action@v2
         with:
           arguments: coveralls

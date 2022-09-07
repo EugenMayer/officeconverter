@@ -24,7 +24,7 @@ jobs:
           username: ${{ github.repository_owner }}
           password: ${{ github.token }}
       # push only on main
-      - name: Build  production
+      - name: Build production
         uses: docker/build-push-action@v3
         with:
           context: .

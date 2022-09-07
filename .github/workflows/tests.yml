@@ -6,7 +6,7 @@ env:
   IMAGE_FQDN: ghcr.io/eugenmayer/kontextwork-converter
 
 jobs:
-  docker:
+  tests:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -34,7 +34,3 @@ jobs:
         uses: gradle/gradle-build-action@v2
         with:
           arguments: e2eTests
-      - name: E2E Tests
-        uses: gradle/gradle-build-action@v2
-        with:
-          arguments: coveralls

@@ -1,0 +1,44 @@
+name: tests
+
+on: push
+
+env:
+  IMAGE_FQDN: ghcr.io/eugenmayer/kontextwork-converter
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Install xmllint
+        run: sudo apt update && sudo apt-get install -y libreoffice
+      - name: Set up JDK 11
+        uses: actions/setup-java@v3
+        with:
+          java-version: '11'
+          distribution: 'adopt'
+      - name: Build
+        uses: gradle/gradle-build-action@v2
+        with:
+          arguments: build
+      - name: Unit Tests
+        uses: gradle/gradle-build-action@v2
+        with:
+          arguments: unitTest
+      - name: IT Tests
+        uses: gradle/gradle-build-action@v2
+        with:
+          arguments: itTests
+      - name: E2E Tests
+        uses: gradle/gradle-build-action@v2
+        with:
+          arguments: e2eTests
+      - name: Report
+        uses: dorny/test-reporter@v1.5.0
+        if: always()
+        with:
+          name: Maven Tests
+          path: "**/test-results/**/TEST*.xml"
+          reporter: java-junit
+          fail-on-error: false

@@ -1,11 +1,10 @@
-[![Build Status](https://travis-ci.org/EugenMayer/officeconverter.svg?branch=master)](https://travis-ci.org/EugenMayer/officeconverter)
 
 ## WAT
 
 Offers a (i think production ready) REST service to convert files like PDF, docx,xlx .. odt .. you get it.. to other formats like pdf, png, doc, pdt, html.
 This project is basically an extended version of [jodconverter-sample-rest](https://github.com/sbraconnier/jodconverter/tree/master/jodconverter-samples/jodconverter-sample-rest)
 
-You can use this project as is using docker with `eugenmayer/kontextwork-converter` or build it here yourself.
+You can use this project as is using docker with `ghcr.io/eugenmayer/kontextwork-converter` or build it here yourself.
 
 ## Build
 
@@ -24,7 +23,7 @@ or better use the docker image with everything included, no dev tools/LO needed 
     make start-prod
 
     # alternativly
-    docker run --memory 512m --name converter-prod --rm -p 8080:8080 eugenmayer/kontextwork-converter:production
+    docker run --memory 512m --name converter-prod --rm -p 8080:8080 ghcr.io/eugenmayer/kontextwork-converter:production
 
 You can now connect to the 5001 remote debugger port, just use the existing IntelliJ task if you like
 

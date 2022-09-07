@@ -69,16 +69,14 @@ configurations {
 group = 'de.kontextwork'
 // this lets us set the version during build using cli -Pversion=1.1.1
 version = "${version}"
-sourceCompatibility = 11
-targetCompatibility = 11
+sourceCompatibility = 17
+targetCompatibility = 17
 
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
 
-// Upgrade log4j due to https://nvd.nist.gov/vuln/detail/CVE-2021-44228
-// can be remove with 2.5.8
-ext['log4j2.version'] = '2.16.0'
+ext['log4j2.version'] = '2.18.0'
 
 // @see https://github.com/sbrannen/spring-events/blob/master/build.gradle#L38
 // and @see https://stackoverflow.com/a/54605523/3625317

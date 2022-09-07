@@ -1,5 +1,5 @@
 # ------------------------- builder
-FROM bellsoft/liberica-openjdk-debian:11 as builder
+FROM bellsoft/liberica-openjdk-debian:17 as builder
 
 ARG VERSION=0.0.1-snapshot
 

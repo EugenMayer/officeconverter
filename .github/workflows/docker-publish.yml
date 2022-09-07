@@ -7,6 +7,7 @@ on:
 
 env:
   IMAGE_FQDN: ghcr.io/eugenmayer/kontextwork-converter
+  JODCONVERTER_VERSION: 4.4.2-2.0
 
 jobs:
   docker:
@@ -24,14 +25,29 @@ jobs:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
           password: ${{ github.token }}
-      # push only on main
-      - name: Build and publish
+      - name: Build and publish production
         uses: docker/build-push-action@v3
         with:
           context: .
           platforms: linux/amd64
           push: true
+          target: production
           tags: | 
             ${{ env.IMAGE_FQDN }}:${{ github.ref_name }}
+            ${{ env.IMAGE_FQDN }}:latest
           build-args: |
             VERSION=${{ github.ref_name }}
+            JODCONVERTER_VERSION=${{ env.JODCONVERTER_VERSION }}
+      - name: Build and publish development
+        uses: docker/build-push-action@v3
+        with:
+          context: .
+          platforms: linux/amd64
+          push: true
+          target: development
+          tags: |
+            ${{ env.IMAGE_FQDN }}:dev-latest
+            ${{ env.IMAGE_FQDN }}:dev-${{ github.ref_name }}
+          build-args: |
+            VERSION=${{ github.ref_name }}
+            JODCONVERTER_VERSION=${{ env.JODCONVERTER_VERSION }}

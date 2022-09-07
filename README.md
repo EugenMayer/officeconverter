@@ -1,4 +1,5 @@
-
+[![tests](https://github.com/EugenMayer/officeconverter/actions/workflows/tests.yml/badge.svg)](https://github.com/EugenMayer/officeconverter/actions/workflows/tests.yml)
+[![docker publish](https://github.com/EugenMayer/officeconverter/actions/workflows/docker-publish.yml/badge.svg)](https://github.com/EugenMayer/officeconverter/actions/workflows/docker-publish.yml)
 ## WAT
 
 Offers a (i think production ready) REST service to convert files like PDF, docx,xlx .. odt .. you get it.. to other formats like pdf, png, doc, pdt, html.
@@ -110,7 +111,7 @@ We already added support for dotx/xltx for example.
 
 - state of the art springboot 2.5 application exposing a classic rest service to convert office document
 - using [jodconverter-spring-boot-starter](https://github.com/sbraconnier/jodconverter/tree/master/jodconverter-spring-boot-starter) for wiring jodconverter-local services
-- build on/for Java 11 for better Docker support
+- build on/for Java 17 for better Docker support
 
 ## Credits
 

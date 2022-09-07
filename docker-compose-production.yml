@@ -3,7 +3,7 @@ version: "2"
 services:
   app:
     container_name: converter-dev
-    image: eugenmayer/kontextwork-converter:production
+    image: ghcr.io/eugenmayer/kontextwork-converter:latest
     volumes:
       - ./:/src
     ports:

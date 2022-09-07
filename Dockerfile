@@ -1,10 +1,11 @@
-ARG VERSION=0.0.1-snapshot
 ARG JODCONVERTER_VERSION=4.4.2-2.0
 # ------------------------- builder
 FROM bellsoft/liberica-openjdk-debian:17 as builder
 RUN mkdir -p /src
 COPY . /src
 WORKDIR /src
+
+ARG VERSION=0.0.1-snapshot
 
 RUN  ./gradlew --no-daemon -Pversion=$VERSION clean build \
   && mkdir -p /dist && cp /src/build/libs/officeconverter-$VERSION.jar /dist/production.jar

@@ -7,7 +7,7 @@ buildscript {
         mockitoVersion = '4.7.0'
 
         // @see https://mvnrepository.com/artifact/org.apache.tika/tika-parsers
-        tikaVersion = '1.28.4'
+        tikaVersion = '2.4.1'
 
         // @see https://mvnrepository.com/artifact/org.projectlombok/lombok
         lombokVersion = '1.18.24'

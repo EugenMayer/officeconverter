@@ -63,7 +63,7 @@ Of course you can just start using your IDE and debug that, but if you want to d
 
     make start
 
-And now connect(attach) to localhost 5001 for debugging `eugenmayer/kontextwork-converter:development` has a default remote
+And now connect(attach) to localhost 5001 for debugging `ghcr.io/eugenmayer/kontextwork-converter:development` has a default remote
 debugging port enabled on 5001
 
 ## REST endpoints

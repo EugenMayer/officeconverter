@@ -99,6 +99,7 @@ dependencies {
             "org.junit.jupiter:junit-jupiter-params",
             "org.mockito:mockito-core:$mockitoVersion",
             "org.mockito:mockito-junit-jupiter:$mockitoVersion",
+            "org.apache.tika:tika-core:${tikaVersion}",
             "org.apache.tika:tika-parsers:${tikaVersion}",
     )
 

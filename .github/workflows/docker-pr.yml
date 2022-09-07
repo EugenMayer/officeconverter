@@ -1,9 +1,10 @@
 name: docker pr
 
 on:
-  pull_request:
-    types: [opened, reopened,edited]
-
+  push:
+    branches:
+      - "*"
+      - '!main'
 env:
   IMAGE_FQDN: ghcr.io/eugenmayer/kontextwork-converter
 

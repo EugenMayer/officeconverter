@@ -2,9 +2,8 @@ name: docker pr
 
 on:
   push:
-    branches:
-      - "**"
-      - '!main'
+    branches-ignore:
+      - "main"
 
 env:
   IMAGE_FQDN: ghcr.io/eugenmayer/kontextwork-converter

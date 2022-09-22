@@ -4,6 +4,8 @@ services:
   app:
     container_name: converter-dev
     image: ghcr.io/eugenmayer/kontextwork-converter:latest
+    security_opt:
+      - 'no-new-privileges:true'
     volumes:
       - ./:/src
     ports:

@@ -7,7 +7,7 @@ on:
 
 env:
   IMAGE_FQDN: ghcr.io/eugenmayer/kontextwork-converter
-  JODCONVERTER_VERSION: 4.4.2-2.0
+  JODCONVERTER_VERSION: 4.4.2-3.0
 
 jobs:
   docker:

@@ -1,13 +1,14 @@
 buildscript {
     ext {
         // @see https://mvnrepository.com/artifact/org.jodconverter/jodconverter-local
-        jodconverterVersion = '4.4.4'
+        // 4.4.3+ does not work yet https://github.com/sbraconnier/jodconverter/issues/317
+        jodconverterVersion = '4.4.2'
 
         // @see https://mvnrepository.com/artifact/org.mockito/mockito-core
         mockitoVersion = '4.9.0'
 
         // @see https://mvnrepository.com/artifact/org.apache.tika/tika-parsers
-        tikaVersion = '2.4.1'
+        tikaVersion = '2.6.0'
 
         // @see https://mvnrepository.com/artifact/org.projectlombok/lombok
         lombokVersion = '1.18.24'

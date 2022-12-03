@@ -12,14 +12,6 @@ bootRun {
     //allow embedded executer to inject legacy types into the system classloader
     jvmArgs += "--add-opens=java.base/java.lang=ALL-UNNAMED"
 
-
-    // ****************************************************
-    // ************* speed optimization *******************
-    // ****************************************************
-    jvmArgs += "-noverify"
-
-    // ***************************************
-
     // inject our application config
     // @see https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html#boot-features-external-config-application-property-files
     systemProperty "spring.config.location", "classpath:config/,file:/etc/converter/config/"

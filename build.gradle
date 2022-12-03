@@ -1,13 +1,13 @@
 buildscript {
     ext {
         // @see https://mvnrepository.com/artifact/org.jodconverter/jodconverter-local
-        jodconverterVersion = '4.3.0'
+        jodconverterVersion = '4.4.4'
 
         // @see https://mvnrepository.com/artifact/org.mockito/mockito-core
-        mockitoVersion = '4.7.0'
+        mockitoVersion = '4.9.0'
 
         // @see https://mvnrepository.com/artifact/org.apache.tika/tika-parsers
-        tikaVersion = '2.4.1'
+        tikaVersion = '2.6.0'
 
         // @see https://mvnrepository.com/artifact/org.projectlombok/lombok
         lombokVersion = '1.18.24'
@@ -20,7 +20,7 @@ buildscript {
         javaxAnnotations = '1.3.2'
 
         // @see https://mvnrepository.com/artifact/org.glassfish.jaxb/jaxb-runtime
-        jaxb = "4.0.0"
+        jaxb = "4.0.1"
     }
 }
 
@@ -33,14 +33,14 @@ plugins {
 
     // @see https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web
     // changing that will upgrade spring to the corresponding version
-    id 'org.springframework.boot' version '2.7.3'
+    id 'org.springframework.boot' version '2.7.6'
 
     // much better output during running tests
     // see https://github.com/radarsh/gradle-test-logger-plugin for configuration options
     id "com.adarshr.test-logger" version "3.2.0"
 
     // @see https://plugins.gradle.org/plugin/org.sonarqube
-    id "org.sonarqube" version "3.4.0.2513"
+    id "org.sonarqube" version "3.5.0.2730"
 }
 
 apply plugin: 'io.spring.dependency-management'
@@ -76,7 +76,7 @@ tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
 
-ext['log4j2.version'] = '2.18.0'
+ext['log4j2.version'] = '2.19.0'
 
 // @see https://github.com/sbrannen/spring-events/blob/master/build.gradle#L38
 // and @see https://stackoverflow.com/a/54605523/3625317

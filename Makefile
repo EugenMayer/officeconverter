@@ -1,5 +1,5 @@
 build: stop
-	docker pull eugenmayer/jodconverter:base
+	docker pull ghcr.io/jodconverter/jodconverter-base:latest
 	docker build --build-arg VERSION=$${VERSION} --target development . -t ghcr.io/eugenmayer/kontextwork-converter:development
 	docker build --build-arg VERSION=$${VERSION} --target production . -t ghcr.io/eugenmayer/kontextwork-converter:production
 

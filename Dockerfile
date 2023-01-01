@@ -1,4 +1,4 @@
-ARG JODCONVERTER_VERSION=4.4.2-2.0
+ARG BASE_IMAGE_VERSION=0.0.1
 # ------------------------- builder
 FROM bellsoft/liberica-openjdk-debian:17 as builder
 RUN mkdir -p /src
@@ -12,7 +12,7 @@ RUN  ./gradlew --no-daemon -Pversion=$VERSION clean build \
 
 
 # --------------------------- production image
-FROM ghcr.io/eugenmayer/jodconverter:base-$JODCONVERTER_VERSION as production
+FROM ghcr.io/jodconverter/jodconverter-base:$BASE_IMAGE_VERSION as production
 ENV JAR_FILE_NAME=officeconverter.jar
 ENV JAR_FILE_BASEDIR=/opt/app
 ENV LOG_BASE_DIR=/var/log

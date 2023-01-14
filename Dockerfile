@@ -17,7 +17,7 @@ COPY ./bin/docker-entrypoint.sh /docker-entrypoint.sh
 RUN mkdir -p ${JAR_FILE_BASEDIR} /etc/app \
   && touch /etc/app/application.properties /var/log/app.log /var/log/app.err \
   && chmod +x /docker-entrypoint.sh \
-  && chown $NONPRIVUSER:$NONPRIVGROUP /var/log/app.log /var/log/app.err \
+  && chown $NONPRIVUSER:$NONPRIVGROUP /var/log/app.log /var/log/app.err
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
 CMD ["--spring.config.additional-location=optional:/etc/app/"]

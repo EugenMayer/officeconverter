@@ -3,9 +3,9 @@
 ## WAT
 
 Offers a (i think production ready) REST service to convert files like PDF, docx,xlx .. odt .. you get it.. to other formats like pdf, png, doc, pdt, html.
-This project is basically an extended version of [jodconverter-sample-rest](https://github.com/sbraconnier/jodconverter/tree/master/jodconverter-samples/jodconverter-sample-rest)
+This project is basically an extended version of [jodconverter-sample-rest](https://github.com/jodconverter/jodconverter/tree/master/jodconverter-samples/jodconverter-sample-rest)
 
-You can use this project as is using docker with `ghcr.io/eugenmayer/kontextwork-converter` or build it here yourself.
+You can use this project as it is using docker with `ghcr.io/eugenmayer/kontextwork-converter` or build it here yourself.
 
 ## Build
 
@@ -72,15 +72,7 @@ Check the controller to understand the different endpoints
 
 ## Release
 
-Adjust the `VERSION` and increment the version
-
-```bash
-# this will build the docker images, tag the repo and the image and push the repo and the images
-make build tag push
-
-# or
-make release
-```
+CI based on tags
 
 ## Configuration
 
@@ -103,16 +95,16 @@ server.port=8090
 ### Adding addition document formats
 
 You can edit the [src/resources/document-formats.json](src/resources/document-formats.json) and add new custom formats.
-The original can be found at (https://github.com/sbraconnier/jodconverter/blob/master/jodconverter-core/src/main/resources/document-formats.json)[jodconverter-core].
+The original can be found at (https://github.com/jodconverter/jodconverter/blob/master/jodconverter-core/src/main/resources/document-formats.json)[jodconverter-core].
 
 We already added support for dotx/xltx for example.
 
 ## Internals
 
 - state of the art springboot 2.5 application exposing a classic rest service to convert office document
-- using [jodconverter-spring-boot-starter](https://github.com/sbraconnier/jodconverter/tree/master/jodconverter-spring-boot-starter) for wiring jodconverter-local services
+- using [jodconverter-spring-boot-starter](https://github.com/jodconverter/jodconverter/tree/master/jodconverter-spring-boot-starter) for wiring jodconverter-local services
 - build on/for Java 17 for better Docker support
 
 ## Credits
 
-A lot of credits go to jodconverter by [jodconverter](https://github.com/sbraconnier/jodconverter) - we completely base on his work. Cheer him up!
+A lot of credits go to jodconverter by [jodconverter](https://github.com/jodconverter/jodconverter) - we completely base on his work. Cheer him up!

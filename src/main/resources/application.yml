@@ -2,9 +2,6 @@ server:
   port: 8080
 
 spring:
-  profiles:
-    # that is our default profile
-    active: prod
   servlet:
     multipart:
       max-file-size: 20MB
@@ -17,7 +14,8 @@ spring:
 jodconverter:
   local:
     enabled: true
-    port-numbers: 2002
+    port-numbers:
+      - 2002
     working-dir: /tmp
     format-options:
       html:

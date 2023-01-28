@@ -3,7 +3,7 @@
 ## WAT
 
 Offers a (i think production ready) REST service to convert files like PDF, docx,xlx .. odt .. you get it.. to other formats like pdf, png, doc, pdt, html.
-This project is basically an extended version of [jodconverter-sample-rest](https://github.com/jodconverter/jodconverter/tree/master/jodconverter-samples/jodconverter-sample-rest)
+This project is basically an extended version of [jodconverter-samples-rest](https://github.com/jodconverter/jodconverter-samples/tree/main/samples/spring-boot-rest)
 
 You can use this project as it is using docker with `ghcr.io/eugenmayer/kontextwork-converter` or build it here yourself.
 
@@ -59,7 +59,7 @@ This fires up a docker container, mounts your source. To auto-rebuild and auto-r
 
 ## Debugging
 
-Of course you can just start using your IDE and debug that, but if you want to debug inside the docker container
+Of course, you can just start using your IDE and debug that, but if you want to debug inside the docker container
 
     make start
 
@@ -76,20 +76,28 @@ CI based on tags
 
 ## Configuration
 
-You can configure the docker images by mounting `/etc/app/application.properties` and put whatever you like into them.
+You can configure the docker images by mounting `/etc/app/application.yml` and put whatever you like into them.
 
 For example if you like to have 2 LibreOffice instances, you would put into the file
 
-```properties
+```yaml
 # amount of libreOffice instances to start - one for each given port. So this means 2
-jodconverter.local.port-numbers: 2002, 2003
-# change the tmp folder
-jodconverter.local.working-dir: /tmp
+jodconverter:
+  local:
+    port-numbers: 
+      - 2002
+      - 2003
+    # change the tmp folder
+    working-dir: /tmp
 # change upload sizes
-spring.servlet.multipart.max-file-size: 5MB
-spring.servlet.multipart.max-request-size: 5MB
-# change the server port (where the REST app is listenting
-server.port=8090
+spring:
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 5MB
+# change the server port (where the REST app is listenting)
+server:
+    portL: 8090
 ```
 
 ### Adding addition document formats

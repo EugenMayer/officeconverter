@@ -1,12 +1,12 @@
 buildscript {
     ext {
         // @see https://mvnrepository.com/artifact/org.jodconverter/jodconverter-local
-        jodconverterVersion = '4.4.5'
+        jodconverterVersion = '4.4.6'
 
         // @see https://mvnrepository.com/artifact/org.mockito/mockito-core
-        mockitoVersion = '4.11.0'
+        mockitoVersion = '5.0.0'
 
-        // @see https://mvnrepository.com/artifact/org.apache.tika/tika-parsers
+        // @see https://mvnrep1ository.com/artifact/org.apache.tika/tika-parsers
         tikaVersion = '2.6.0'
 
         // @see https://mvnrepository.com/artifact/org.projectlombok/lombok
@@ -33,7 +33,7 @@ plugins {
 
     // @see https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web
     // changing that will upgrade spring to the corresponding version
-    id 'org.springframework.boot' version '2.7.7'
+    id 'org.springframework.boot' version '3.0.2'
 
     // much better output during running tests
     // see https://github.com/radarsh/gradle-test-logger-plugin for configuration options

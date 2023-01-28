@@ -1,2 +1,5 @@
 ---
-spring.profiles: prod
+spring:
+  config:
+    activate:
+      on-profile: prod

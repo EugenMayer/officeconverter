@@ -109,7 +109,7 @@ We already added support for dotx/xltx for example.
 
 ## Internals
 
-- state of the art springboot 2.5 application exposing a classic rest service to convert office document
+- state of the art springboot 3.0 application exposing a classic rest service to convert office document
 - using [jodconverter-spring-boot-starter](https://github.com/jodconverter/jodconverter/tree/master/jodconverter-spring-boot-starter) for wiring jodconverter-local services
 - build on/for Java 17 for better Docker support
 

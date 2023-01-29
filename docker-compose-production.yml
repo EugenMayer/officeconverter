@@ -1,14 +1,9 @@
-version: "2"
+version: "3"
 
 services:
   app:
-    container_name: converter-dev
+    container_name: converter
     image: ghcr.io/eugenmayer/kontextwork-converter:latest
     security_opt:
       - 'no-new-privileges:true'
-    volumes:
-      - ./:/src
-    ports:
-      - 5001:5001
-      - 8080:8080
     mem_limit: 512M

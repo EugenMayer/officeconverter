@@ -7,6 +7,19 @@ This project is basically an extended version of [jodconverter-samples-rest](htt
 
 You can use this project as it is using docker with `ghcr.io/eugenmayer/kontextwork-converter` or build it here yourself.
 
+
+## Usage
+
+```bash
+docker run --memory 512m --name converter-prod --rm -p 8080:8080 ghcr.io/eugenmayer/kontextwork-converter:production
+```
+
+Now convert a `docx` to `html`
+```bash
+cd officeconverter
+curl -F file=@examples/example.docx "localhost:14080/conversion?format=html" -o /tmp/test.html
+```
+
 ## Build
 
 local java build, when you have all the build tools present + libreoffice locally installed
@@ -18,13 +31,11 @@ local java build, when you have all the build tools present + libreoffice locall
 
 or better use the docker image with everything included, no dev tools/LO needed locally
 
-    # this builds the source a
-    make build
-
-    make start-prod
-
-    # alternativly
-    docker run --memory 512m --name converter-prod --rm -p 8080:8080 ghcr.io/eugenmayer/kontextwork-converter:production
+```bash
+# this builds the source a
+make build
+make start-prod
+```
 
 You can now connect to the 5001 remote debugger port, just use the existing IntelliJ task if you like
 
@@ -69,6 +80,8 @@ debugging port enabled on 5001
 ## REST endpoints
 
 Check the controller to understand the different endpoints
+ 
+-  `/conversion?format=html` as multipart with `file` as the file to convert and `format` for the target format
 
 ## Release
 
@@ -105,7 +118,7 @@ server:
 You can edit the [src/resources/document-formats.json](src/resources/document-formats.json) and add new custom formats.
 The original can be found at (https://github.com/jodconverter/jodconverter/blob/master/jodconverter-core/src/main/resources/document-formats.json)[jodconverter-core].
 
-We already added support for dotx/xltx for example.
+We already added support for `dotx/xltx` for example.
 
 ## Internals
 

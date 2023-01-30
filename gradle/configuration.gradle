@@ -1,0 +1,24 @@
+configurations {
+    compileOnly {
+        // If we enable this, we will rebuild the entire project everytime we change anything, not compile cache
+        extendsFrom annotationProcessor
+    }
+    developmentOnly {}
+    runtimeClasspath {
+        extendsFrom developmentOnly
+    }
+
+    // needed to get lombok working in our tests
+    testImplementation {
+        extendsFrom testAnnotationProcessor
+        // we do not need junit5 asserts / integrations, remove for more auto include convenience
+        exclude module: 'junit'
+        // exclude hamcrest so we do not mix assertThat with assertj - we only use assertj
+        // exclude group: 'org.hamcrest', module: 'hamcrest-library'
+        // exclude group: 'org.hamcrest', module: 'hamcrest-core'
+    }
+
+    // Exclude Springs default logging framework since we use Log4j2g
+    all*.exclude module : 'spring-boot-starter-logging'
+    all*.exclude module : 'logback-classic'
+}

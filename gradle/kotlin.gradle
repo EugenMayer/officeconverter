@@ -1,0 +1,19 @@
+kotlin {
+    // see https://docs.gradle.org/current/userguide/toolchains.html
+    jvmToolchain {
+        languageVersion.set(JavaLanguageVersion.of(17))
+    }
+}
+
+compileKotlin {
+    compilerOptions {
+        freeCompilerArgs = ["-Xjsr305=strict"]
+    }
+}
+
+compileTestKotlin {
+    compilerOptions {
+        freeCompilerArgs = ["-Xjsr305=strict"]
+    }
+}
+

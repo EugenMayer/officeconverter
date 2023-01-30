@@ -1,0 +1,51 @@
+
+// @see https://github.com/sbrannen/spring-events/blob/master/build.gradle#L38
+// and @see https://stackoverflow.com/a/54605523/3625317
+dependencies {
+    implementation(
+            "org.jodconverter:jodconverter-local:$jodconverterVersion",
+            "org.jodconverter:jodconverter-spring-boot-starter:$jodconverterVersion",
+            "org.springframework.boot:spring-boot-starter-web",
+            "org.springframework:spring-core",
+            "commons-io:commons-io:$commonsIo",
+
+            // needed when compiling against > Java 8 since jaxb is no longer included
+            // you would get Error creating bean with name 'xmlModelPlugin': Lookup method resolution failed
+            "org.glassfish.jaxb:jaxb-runtime:$jaxb",
+
+            "org.jetbrains.kotlin:kotlin-reflect",
+            "org.jetbrains.kotlin:kotlin-stdlib-jdk8",
+            'org.apache.logging.log4j:log4j-api-kotlin:1.2.0'
+    )
+
+    testImplementation(
+            "org.springframework.boot:spring-boot-starter-test",
+            "org.junit.jupiter:junit-jupiter-api",
+            "org.junit.jupiter:junit-jupiter-params",
+            "org.mockito:mockito-core:$mockitoVersion",
+            "org.mockito:mockito-junit-jupiter:$mockitoVersion",
+            "org.apache.tika:tika-core:${tikaVersion}",
+            "org.apache.tika:tika-parsers:${tikaVersion}",
+    )
+
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
+
+    annotationProcessor(
+            "javax.annotation:javax.annotation-api:$javaxAnnotations",
+            "org.projectlombok:lombok:$lombokVersion"
+    )
+
+    testAnnotationProcessor(
+            "org.projectlombok:lombok:$lombokVersion",
+    )
+
+    compileOnly(
+            "org.projectlombok:lombok:$lombokVersion",
+            "org.springframework.boot:spring-boot-configuration-processor"
+    )
+
+    developmentOnly("org.springframework.boot:spring-boot-devtools")
+
+    runtimeOnly 'org.springframework.boot:spring-boot-starter-tomcat'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+}

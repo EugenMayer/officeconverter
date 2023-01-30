@@ -17,7 +17,8 @@ docker run --memory 512m --name converter-prod --rm -p 8080:8080 ghcr.io/eugenma
 Now convert a `docx` to `html`
 ```bash
 cd officeconverter
-curl -F file=@examples/example.docx "localhost:14080/conversion?format=html" -o /tmp/test.html
+curl -F file=@src/test/resources/testfiles/withpictures.docx "localhost:14080/conversion?format=html" -o /tmp/test.html
+curl -F file=@src/test/resources/testfiles/template.dotx "localhost:14080/conversion?format=html" -o /tmp/test.html
 ```
 
 ## Build

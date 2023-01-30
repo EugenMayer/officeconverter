@@ -1,4 +1,5 @@
 buildscript {
+    ext.kotlin_version = '1.8.0'
     ext {
         // @see https://mvnrepository.com/artifact/org.jodconverter/jodconverter-local
         jodconverterVersion = '4.4.6'
@@ -22,6 +23,14 @@ buildscript {
         // @see https://mvnrepository.com/artifact/org.glassfish.jaxb/jaxb-runtime
         jaxb = "4.0.1"
     }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+
+    ext['log4j2.version'] = '2.19.0'
 }
 
 plugins {
@@ -41,85 +50,27 @@ plugins {
 
     // @see https://plugins.gradle.org/plugin/org.sonarqube
     id "org.sonarqube" version "3.5.0.2730"
+
+    id "org.jetbrains.kotlin.jvm" version "1.8.0"
+    id "org.jetbrains.kotlin.plugin.allopen" version "1.8.0"
+    id "org.jetbrains.kotlin.plugin.spring" version "1.8.0"
 }
 
 apply plugin: 'io.spring.dependency-management'
+apply plugin: 'kotlin'
 apply plugin: 'org.springframework.boot'
 apply from: 'gradle/repositories.gradle'
+apply from: 'gradle/dependencies.gradle'
 apply from: 'gradle/build.gradle'
 apply from: 'gradle/tests.gradle'
 apply from: 'gradle/spring_bootRun.gradle'
 apply from: 'gradle/sonarqube.gradle'
+apply from: 'gradle/kotlin.gradle'
+apply from: 'gradle/java.gradle'
+apply from: 'gradle/configuration.gradle'
 
-configurations {
-    compileOnly {
-        extendsFrom annotationProcessor
-    }
-
-    developmentOnly
-
-    providedRuntime
-
-    // needed to get lombok working in our tests
-    testImplementation {
-        extendsFrom annotationProcessor
-    }
-}
 
 group = 'de.kontextwork'
 // this lets us set the version during build using cli -Pversion=1.1.1
 version = "${version}"
-sourceCompatibility = 17
-targetCompatibility = 17
 
-tasks.withType(JavaCompile) {
-    options.encoding = 'UTF-8'
-}
-
-ext['log4j2.version'] = '2.19.0'
-
-// @see https://github.com/sbrannen/spring-events/blob/master/build.gradle#L38
-// and @see https://stackoverflow.com/a/54605523/3625317
-dependencies {
-    implementation(
-            "org.jodconverter:jodconverter-local:$jodconverterVersion",
-            "org.jodconverter:jodconverter-spring-boot-starter:$jodconverterVersion",
-            "org.springframework.boot:spring-boot-starter-web",
-            "org.springframework:spring-core",
-            "commons-io:commons-io:$commonsIo",
-
-            // needed when compiling against > Java 8 since jaxb is no longer included
-            // you would get Error creating bean with name 'xmlModelPlugin': Lookup method resolution failed
-            "org.glassfish.jaxb:jaxb-runtime:$jaxb"
-    )
-
-    testImplementation(
-            "org.springframework.boot:spring-boot-starter-test",
-            "org.junit.jupiter:junit-jupiter-api",
-            "org.junit.jupiter:junit-jupiter-params",
-            "org.mockito:mockito-core:$mockitoVersion",
-            "org.mockito:mockito-junit-jupiter:$mockitoVersion",
-            "org.apache.tika:tika-core:${tikaVersion}",
-            "org.apache.tika:tika-parsers:${tikaVersion}",
-    )
-
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
-
-    annotationProcessor(
-            "javax.annotation:javax.annotation-api:$javaxAnnotations",
-            "org.projectlombok:lombok:$lombokVersion"
-    )
-
-    testAnnotationProcessor(
-            "org.projectlombok:lombok:$lombokVersion",
-    )
-
-    compileOnly(
-            "org.projectlombok:lombok:$lombokVersion",
-            "org.springframework.boot:spring-boot-configuration-processor"
-    )
-
-    developmentOnly("org.springframework.boot:spring-boot-devtools")
-
-    providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
-}

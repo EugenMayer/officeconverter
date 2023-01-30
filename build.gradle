@@ -66,7 +66,6 @@ apply from: 'gradle/tests.gradle'
 apply from: 'gradle/spring_bootRun.gradle'
 apply from: 'gradle/sonarqube.gradle'
 apply from: 'gradle/kotlin.gradle'
-apply from: 'gradle/java.gradle'
 apply from: 'gradle/configuration.gradle'
 
 

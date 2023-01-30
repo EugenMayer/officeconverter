@@ -6,13 +6,14 @@ kotlin {
 }
 
 compileKotlin {
-    kotlinOptions {
+    compilerOptions {
         freeCompilerArgs = ["-Xjsr305=strict"]
     }
 }
 
 compileTestKotlin {
-    kotlinOptions {
+    compilerOptions {
         freeCompilerArgs = ["-Xjsr305=strict"]
     }
 }
+

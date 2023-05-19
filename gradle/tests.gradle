@@ -61,7 +61,10 @@ task e2eTests(type: Test) {
 }
 
 tasks.withType(Test).configureEach {
-    reports.junitXml.enabled = true
+//    reports {
+//        junitXml.enabled = true
+//        html.enabled = true
+//    }
 
     if (project.hasProperty('debug')) {
         jvmArgs = ["-agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=*:5007"]

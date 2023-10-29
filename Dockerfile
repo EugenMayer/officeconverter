@@ -1,6 +1,6 @@
 ARG BASE_IMAGE_VERSION=0.1.0
 # ------------------------- builder
-FROM bellsoft/liberica-openjdk-debian:21 as builder
+FROM bellsoft/liberica-openjdk-debian:17 as builder
 RUN mkdir -p /src
 COPY . /src
 WORKDIR /src

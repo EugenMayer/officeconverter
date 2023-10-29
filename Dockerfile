@@ -1,4 +1,4 @@
-ARG BASE_IMAGE_VERSION=0.0.1
+ARG BASE_IMAGE_VERSION=0.0.2
 # ------------------------- builder
 FROM bellsoft/liberica-openjdk-debian:17 as builder
 RUN mkdir -p /src

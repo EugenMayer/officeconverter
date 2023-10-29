@@ -88,6 +88,14 @@ Check the controller to understand the different endpoints
 
 CI based on tags
 
+### Upgrade
+
+To upgrade libreoffice or the jodconverter runtime
+
+ - see available releases under https://github.com/jodconverter/docker-image-jodconverter-runtime
+ - create pr and adjust docker-pr.yml and docker-publish.yml `BASE_IMAGE_VERSION` to match your version
+ - merge PR if tests run successfully
+
 ## Configuration
 
 You can configure the docker images by mounting `/etc/app/application.yml` and put whatever you like into them.

@@ -1,7 +1,12 @@
+ifdef RUNTIME_VERSION
+    $(info RUNTIME_VERSION defined manually)
+else
+    RUNTIME_VERSION := 0.1.5
+endif
+
 build: stop
-	docker pull ghcr.io/jodconverter/jodconverter-runtime:0.0.1
-	docker build --build-arg BASE_IMAGE_VERSION=0.0.1 --build-arg VERSION=0.1.0 --target development . -t ghcr.io/eugenmayer/kontextwork-converter:development
-	docker build --build-arg BASE_IMAGE_VERSION=0.0.1 --build-arg VERSION=0.1.0 --target production . -t ghcr.io/eugenmayer/kontextwork-converter:production
+	docker build --pull --build-arg RUNTIME_VERSION=$(RUNTIME_VERSION) --build-arg VERSION=0.0.1-SNAPSHOT --target development . -t ghcr.io/eugenmayer/kontextwork-converter:development
+	docker build --pull --build-arg RUNTIME_VERSION=$(RUNTIME_VERSION) --build-arg VERSION=0.0.1-SNAPSHOT --target production . -t ghcr.io/eugenmayer/kontextwork-converter:production
 
 start-src: stop
 	./start.sh

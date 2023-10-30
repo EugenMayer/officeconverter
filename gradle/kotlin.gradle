@@ -7,13 +7,14 @@ kotlin {
 
 compileKotlin {
     compilerOptions {
-        freeCompilerArgs = ["-Xjsr305=strict"]
+        freeCompilerArgs = ["-Xjsr305=strict", "-Xjvm-default=all", "-Xemit-jvm-type-annotations"]
     }
 }
 
 compileTestKotlin {
     compilerOptions {
-        freeCompilerArgs = ["-Xjsr305=strict"]
+        freeCompilerArgs = ["-Xjsr305=strict", "-Xjvm-default=all", "-Xemit-jvm-type-annotations"]
     }
 }
 
+ext["kotlin.version"] = "1.9.10"

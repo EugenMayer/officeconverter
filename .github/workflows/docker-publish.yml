@@ -7,7 +7,7 @@ on:
 
 env:
   IMAGE_FQDN: ghcr.io/eugenmayer/kontextwork-converter
-  BASE_IMAGE_VERSION: 0.0.1
+  RUNTIME_VERSION: 0.1.5
 
 jobs:
   docker:
@@ -34,10 +34,11 @@ jobs:
           target: production
           tags: | 
             ${{ env.IMAGE_FQDN }}:${{ github.ref_name }}
-            ${{ env.IMAGE_FQDN }}:latest
+            ${{ env.IMAGE_FQDN }}:production-${{ github.ref_name }}
+            ${{ env.IMAGE_FQDN }}:production
           build-args: |
             VERSION=${{ github.ref_name }}
-            BASE_IMAGE_VERSION=${{ env.BASE_IMAGE_VERSION }}
+            RUNTIME_VERSION=${{ env.RUNTIME_VERSION }}
       - name: Build and publish development
         uses: docker/build-push-action@v3
         with:
@@ -46,8 +47,8 @@ jobs:
           push: true
           target: development
           tags: |
-            ${{ env.IMAGE_FQDN }}:dev-latest
-            ${{ env.IMAGE_FQDN }}:dev-${{ github.ref_name }}
+            ${{ env.IMAGE_FQDN }}:development
+            ${{ env.IMAGE_FQDN }}:development-${{ github.ref_name }}
           build-args: |
             VERSION=${{ github.ref_name }}
-            BASE_IMAGE_VERSION=${{ env.BASE_IMAGE_VERSION }}
+            RUNTIME_VERSION=${{ env.RUNTIME_VERSION }}

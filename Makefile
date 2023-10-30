@@ -1,7 +1,7 @@
 build: stop
 	docker pull ghcr.io/jodconverter/jodconverter-runtime:0.1.1
-	docker build --build-arg BASE_IMAGE_VERSION=0.1.1 --build-arg VERSION=0.0.1-SNAPSHOT --target development . -t ghcr.io/eugenmayer/kontextwork-converter:development
-	docker build --build-arg BASE_IMAGE_VERSION=0.1.1 --build-arg VERSION=0.0.1-SNAPSHOT --target production . -t ghcr.io/eugenmayer/kontextwork-converter:production
+	docker build --build-arg BASE_IMAGE_VERSION=jdk-0.1.2 --build-arg VERSION=0.0.1-SNAPSHOT --target development . -t ghcr.io/eugenmayer/kontextwork-converter:development
+	docker build --build-arg BASE_IMAGE_VERSION=0.1.2 --build-arg VERSION=0.0.1-SNAPSHOT --target production . -t ghcr.io/eugenmayer/kontextwork-converter:production
 
 start-src: stop
 	./start.sh

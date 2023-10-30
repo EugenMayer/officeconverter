@@ -7,7 +7,7 @@ on:
 
 env:
   IMAGE_FQDN: ghcr.io/eugenmayer/kontextwork-converter
-  RUNTIME_VERSION: 0.1.5
+  RUNTIME_VERSION: 0.1.6
 
 jobs:
   docker:

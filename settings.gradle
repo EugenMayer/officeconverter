@@ -1,4 +1,8 @@
 rootProject.name = 'officeconverter'
+// @see https://github.com/SonarSource/sonar-scanning-examples/issues/169#issuecomment-1769854089
+// @see https://community.sonarsource.com/t/sonar-gradle-skipcompile-is-not-working/102710/3
+System.setProperty("sonar.gradle.skipCompile", "true")
+
 // Composite build for library development
 //includeBuild("../jodconverter") {
 //    dependencySubstitution {

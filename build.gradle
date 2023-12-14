@@ -6,7 +6,7 @@ buildscript {
         jodconverterVersion = '4.4.6'
 
         // @see https://mvnrepository.com/artifact/org.mockito/mockito-core
-        mockitoVersion = '5.7.0'
+        mockitoVersion = '5.8.0'
 
         // @see https://mvnrepository.com/artifact/org.apache.tika/tika-parsers
         tikaVersion = '2.9.1'

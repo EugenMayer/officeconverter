@@ -1,6 +1,6 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="ConverterApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-    <module name="de.kontextwork.officeconverter.main" />
+    <module name="officeconverter.main" />
     <option name="SPRING_BOOT_MAIN_CLASS" value="de.kontextwork.converter.ConverterApplication" />
     <method v="2">
       <option name="Make" enabled="true" />

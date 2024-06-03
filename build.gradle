@@ -1,18 +1,18 @@
 buildscript {
     // @see https://mvnrepository.com/artifact/org.jetbrains.kotlin/kotlin-gradle-plugin
-    ext.kotlin_version = '1.9.21'
+    ext.kotlin_version = '1.9.24'
     ext {
         // @see https://mvnrepository.com/artifact/org.jodconverter/jodconverter-local
         jodconverterVersion = '4.4.7'
 
         // @see https://mvnrepository.com/artifact/org.mockito/mockito-core
-        mockitoVersion = '5.11.0'
+        mockitoVersion = '5.12.0'
 
         // @see https://mvnrepository.com/artifact/org.apache.tika/tika-parsers
-        tikaVersion = '2.9.1'
+        tikaVersion = '2.9.2'
 
         // @see https://mvnrepository.com/artifact/org.projectlombok/lombok
-        lombokVersion = '1.18.30'
+        lombokVersion = '1.18.32'
 
         // @see https://mvnrepository.com/artifact/commons-io/commons-io
         commonsIo = '2.15.1'
@@ -22,7 +22,7 @@ buildscript {
         javaxAnnotations = '1.3.2'
 
         // @see https://mvnrepository.com/artifact/org.glassfish.jaxb/jaxb-runtime
-        jaxb = "4.0.4"
+        jaxb = "4.0.5"
 
         // @see https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-api-kotlin
         kotlinLog4j = "1.4.0"
@@ -44,7 +44,7 @@ plugins {
 
     // @see https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web
     // changing that will upgrade spring to the corresponding version
-    id 'org.springframework.boot' version '3.2.3'
+    id 'org.springframework.boot' version '3.2.6'
 
     // much better output during running tests
     // see https://github.com/radarsh/gradle-test-logger-plugin for configuration options
@@ -53,9 +53,9 @@ plugins {
     // @see https://plugins.gradle.org/plugin/org.sonarqube
     id "org.sonarqube" version "4.4.1.3373"
 
-    id "org.jetbrains.kotlin.jvm" version "1.9.22"
-    id "org.jetbrains.kotlin.plugin.allopen" version "1.9.22"
-    id "org.jetbrains.kotlin.plugin.spring" version "1.9.22"
+    id "org.jetbrains.kotlin.jvm" version "1.9.24"
+    id "org.jetbrains.kotlin.plugin.allopen" version "1.9.24"
+    id "org.jetbrains.kotlin.plugin.spring" version "1.9.24"
 }
 
 apply plugin: 'io.spring.dependency-management'

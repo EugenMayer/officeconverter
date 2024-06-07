@@ -139,7 +139,7 @@ To upgrade libreoffice or the jodconverter runtime
 - using [jodconverter-spring-boot-starter](https://github.com/jodconverter/jodconverter/tree/master/jodconverter-spring-boot-starter) for wiring jodconverter-local services
 - build on/for Java 17 for better Docker support
 
-## Waranty
+## Warranty
 
 Absolutely none, use it at your own risk and without any guarantees.
 

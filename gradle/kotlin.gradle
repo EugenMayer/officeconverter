@@ -17,4 +17,4 @@ compileTestKotlin {
     }
 }
 
-ext["kotlin.version"] = "1.9.10"
+ext["kotlin.version"] = "2.0.21"

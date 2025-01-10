@@ -32,7 +32,6 @@ dependencies {
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
 
     annotationProcessor(
-            "javax.annotation:javax.annotation-api:$javaxAnnotations",
             "org.projectlombok:lombok:$lombokVersion"
     )
 

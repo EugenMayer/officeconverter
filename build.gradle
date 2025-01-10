@@ -1,25 +1,21 @@
 buildscript {
     // @see https://mvnrepository.com/artifact/org.jetbrains.kotlin/kotlin-gradle-plugin
-    ext.kotlin_version = '2.0.21'
+    ext.kotlin_version = '2.1.0'
     ext {
         // @see https://mvnrepository.com/artifact/org.jodconverter/jodconverter-local
         jodconverterVersion = '4.4.8'
 
         // @see https://mvnrepository.com/artifact/org.mockito/mockito-core
-        mockitoVersion = '5.14.1'
+        mockitoVersion = '5.15.2'
 
         // @see https://mvnrepository.com/artifact/org.apache.tika/tika-parsers
-        tikaVersion = '2.9.2'
+        tikaVersion = '3.0.0'
 
         // @see https://mvnrepository.com/artifact/org.projectlombok/lombok
-        lombokVersion = '1.18.34'
+        lombokVersion = '1.18.36'
 
         // @see https://mvnrepository.com/artifact/commons-io/commons-io
-        commonsIo = '2.17.0'
-
-        // javax.annotation needed when compiling against > Java 8 since it is no longer included
-        // @see https://mvnrepository.com/artifact/javax.annotation/javax.annotation-api
-        javaxAnnotations = '1.3.2'
+        commonsIo = '2.18.0'
 
         // @see https://mvnrepository.com/artifact/org.glassfish.jaxb/jaxb-runtime
         jaxb = "4.0.5"
@@ -44,18 +40,19 @@ plugins {
 
     // @see https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web
     // changing that will upgrade spring to the corresponding version
-    id 'org.springframework.boot' version '3.3.4'
+    id 'org.springframework.boot' version '3.4.1'
 
     // much better output during running tests
     // see https://github.com/radarsh/gradle-test-logger-plugin for configuration options
     id "com.adarshr.test-logger" version "4.0.0"
 
     // @see https://plugins.gradle.org/plugin/org.sonarqube
-    id "org.sonarqube" version "5.1.0.4882"
+    id "org.sonarqube" version "6.0.1.5171"
 
-    id "org.jetbrains.kotlin.jvm" version "2.0.21"
-    id "org.jetbrains.kotlin.plugin.allopen" version "2.0.21"
-    id "org.jetbrains.kotlin.plugin.spring" version "2.0.21"
+    // @see https://plugins.gradle.org/plugin/org.jetbrains.kotlin.jvm
+    id "org.jetbrains.kotlin.jvm" version "2.1.0"
+    id "org.jetbrains.kotlin.plugin.allopen" version "2.1.0"
+    id "org.jetbrains.kotlin.plugin.spring" version "2.1.0"
 }
 
 apply plugin: 'io.spring.dependency-management'

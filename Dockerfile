@@ -19,6 +19,8 @@ FROM ghcr.io/jodconverter/jodconverter-runtime:$RUNTIME_VERSION as production
 ENV JAR_FILE_NAME=officeconverter.jar
 ENV JAR_FILE_BASEDIR=/opt/app
 ENV LOG_BASE_DIR=/var/log
+ENV LANG=C.UTF-8
+ENV LC_ALL=C.UTF-8
 
 COPY ./bin/docker-entrypoint.sh /docker-entrypoint.sh
 RUN mkdir -p ${JAR_FILE_BASEDIR} /etc/app \
@@ -41,6 +43,8 @@ FROM ghcr.io/jodconverter/jodconverter-runtime:jdk-$RUNTIME_VERSION as developme
 ENV JAR_FILE_NAME=officeconverter.jar
 ENV JAR_FILE_BASEDIR=/opt/app
 ENV LOG_BASE_DIR=/var/log
+ENV LANG=C.UTF-8
+ENV LC_ALL=C.UTF-8
 
 COPY ./bin/docker-entrypoint.sh /docker-entrypoint.sh
 RUN mkdir -p ${JAR_FILE_BASEDIR} /etc/app \

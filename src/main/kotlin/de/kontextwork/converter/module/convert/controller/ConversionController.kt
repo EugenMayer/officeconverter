@@ -11,6 +11,7 @@ import org.springframework.http.HttpHeaders
 import org.springframework.http.HttpStatus
 import org.springframework.http.MediaType
 import org.springframework.http.ResponseEntity
+import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestParam
@@ -62,5 +63,12 @@ class ConversionController(
         return ResponseEntity.ok().headers(headers).body(convertedFile.toByteArray())
     }
 
-
+    @GetMapping("/ready")
+    fun isReady(): ResponseEntity<Void> {
+        return if (converterService.isReady()) {
+            ResponseEntity.ok().build()
+        } else {
+            ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).build()
+        }
+    }
 }

@@ -26,7 +26,7 @@ curl -F file=@src/test/resources/testfiles/template.dotx "localhost:14080/conver
 Check the controller to understand the different endpoints
 
 -  `/conversion?format=html` as multipart with `file` as the file to convert and `format` for the target format
-- `/ready` is a readiness GET-endpoint that returns 200 OK when the application is ready, otherwise 503 Service Unavailable
+- `/ready` is a readiness GET-endpoint that returns 200 OK when the application is ready, otherwise 503 Service Unavailable. This *might* create some load, and should be used and monitored accordingly.
 
 
 ### Configuration

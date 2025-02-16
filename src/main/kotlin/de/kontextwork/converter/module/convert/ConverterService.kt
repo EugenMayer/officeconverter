@@ -43,4 +43,16 @@ class ConverterService(
             .execute()
         return outputStream
     }
+
+    fun isReady(): Boolean {
+        if (!officeManager.isRunning) {
+            return false
+        }
+
+        // Execute a dummy task
+        officeManager.execute { }
+
+        // If the above no-op task executed successfully, the application is ready
+        return true
+    }
 }

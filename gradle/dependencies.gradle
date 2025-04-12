@@ -31,16 +31,8 @@ dependencies {
 
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
 
-    annotationProcessor(
-            "org.projectlombok:lombok:$lombokVersion"
-    )
-
-    testAnnotationProcessor(
-            "org.projectlombok:lombok:$lombokVersion",
-    )
 
     compileOnly(
-            "org.projectlombok:lombok:$lombokVersion",
             "org.springframework.boot:spring-boot-configuration-processor"
     )
 

@@ -11,9 +11,6 @@ buildscript {
         // @see https://mvnrepository.com/artifact/org.apache.tika/tika-parsers
         tikaVersion = '3.1.0'
 
-        // @see https://mvnrepository.com/artifact/org.projectlombok/lombok
-        lombokVersion = '1.18.38'
-
         // @see https://mvnrepository.com/artifact/commons-io/commons-io
         commonsIo = '2.18.0'
 

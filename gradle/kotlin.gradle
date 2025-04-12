@@ -1,7 +1,7 @@
 kotlin {
     // see https://docs.gradle.org/current/userguide/toolchains.html
     jvmToolchain {
-        languageVersion.set(JavaLanguageVersion.of(17))
+        languageVersion.set(JavaLanguageVersion.of(21))
     }
 }
 
@@ -17,4 +17,4 @@ compileTestKotlin {
     }
 }
 
-ext["kotlin.version"] = "2.0.21"
+ext["kotlin.version"] = "2.1.20"

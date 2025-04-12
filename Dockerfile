@@ -1,7 +1,7 @@
 ARG RUNTIME_VERSION
 
 # ------------------------- builder
-FROM bellsoft/liberica-openjdk-debian:17 as builder
+FROM bellsoft/liberica-openjdk-debian:21 as builder
 ARG VERSION=0.0.1-snapshot
 
 RUN mkdir -p /src

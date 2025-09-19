@@ -1,3 +1,9 @@
+configurations.configureEach {
+    // Exclude Springs default logging framework since we use Log4j2
+    exclude module: 'spring-boot-starter-logging'
+    exclude module: 'logback-classic'
+}
+
 configurations {
     compileOnly {
         // If we enable this, we will rebuild the entire project everytime we change anything, not compile cache
@@ -17,8 +23,4 @@ configurations {
         // exclude group: 'org.hamcrest', module: 'hamcrest-library'
         // exclude group: 'org.hamcrest', module: 'hamcrest-core'
     }
-
-    // Exclude Springs default logging framework since we use Log4j2g
-    all*.exclude module : 'spring-boot-starter-logging'
-    all*.exclude module : 'logback-classic'
 }

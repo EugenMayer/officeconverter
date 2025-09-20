@@ -8,7 +8,7 @@ RUN mkdir -p /src
 COPY . /src
 WORKDIR /src
 
-RUN  ./gradlew --no-daemon -Pversion=$VERSION clean build \
+RUN  ./gradlew --no-daemon -Pversion=$VERSION clean build -x test \
   && mkdir -p /dist && cp /src/build/libs/officeconverter-$VERSION.jar /dist/production.jar
 
 # --------------------------- production image

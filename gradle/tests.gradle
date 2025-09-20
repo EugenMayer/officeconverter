@@ -1,4 +1,4 @@
-task IntelliJ(type: Test) {
+tasks.register('IntelliJ', Test) {
     useJUnitPlatform {}
 
     testlogger {
@@ -24,7 +24,10 @@ test {
     maxHeapSize = "4069m"
 }
 
-task unitTests(type: Test) {
+tasks.register('unitTests', Test) {
+    testClassesDirs = testing.suites.test.sources.output.classesDirs
+    classpath = testing.suites.test.sources.runtimeClasspath
+
     doFirst {
         systemProperty 'spring.profiles.active', 'unit'
     }
@@ -34,11 +37,10 @@ task unitTests(type: Test) {
     }
 }
 
+tasks.register('itTests', Test) {
+    testClassesDirs = testing.suites.test.sources.output.classesDirs
+    classpath = testing.suites.test.sources.runtimeClasspath
 
-// unitTest is legacy, remove when we changed the CI and all this and unitTest is no longer used
-task unitTest(dependsOn: unitTests)
-
-task itTests(type: Test) {
     // this loads the correct configuration
     doFirst {
         systemProperty 'spring.profiles.active', 'it'
@@ -49,7 +51,10 @@ task itTests(type: Test) {
     }
 }
 
-task e2eTests(type: Test) {
+tasks.register('e2eTests', Test) {
+    testClassesDirs = testing.suites.test.sources.output.classesDirs
+    classpath = testing.suites.test.sources.runtimeClasspath
+
     // this loads the correct configuration
     doFirst {
         systemProperty 'spring.profiles.active', 'e2e'
@@ -61,6 +66,9 @@ task e2eTests(type: Test) {
 }
 
 tasks.withType(Test).configureEach {
+    testClassesDirs = testing.suites.test.sources.output.classesDirs
+    classpath = testing.suites.test.sources.runtimeClasspath
+
 //    reports {
 //        junitXml.enabled = true
 //        html.enabled = true

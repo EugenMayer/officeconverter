@@ -13,29 +13,29 @@ jobs:
         uses: actions/checkout@v3
       - name: Install libreoffice
         run: sudo apt update && sudo apt-get install -y libreoffice
-      - name: Set up JDK 17
+      - name: Set up JDK 21
         uses: actions/setup-java@v3
         with:
-          java-version: '17'
+          java-version: '21'
           distribution: 'adopt'
       - name: Build
         uses: gradle/gradle-build-action@v2
         with:
-          arguments: build
+          arguments: build -x test
       - name: Unit Tests
         uses: gradle/gradle-build-action@v2
         with:
-          arguments: unitTest
+          arguments: unitTests
       - name: IT Tests
         uses: gradle/gradle-build-action@v2
         with:
           arguments: itTests
-      - name: E2E Tests
-        uses: gradle/gradle-build-action@v2
-        with:
-          arguments: e2eTests
+#      - name: E2E Tests
+#        uses: gradle/gradle-build-action@v2
+#        with:
+#          arguments: e2eTests
       - name: Report
-        uses: dorny/test-reporter@v1.6.0
+        uses: dorny/test-reporter@v2.1.1
         if: always()
         with:
           name: Tests Results

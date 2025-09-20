@@ -1,7 +1,4 @@
 tasks.register('IntelliJ', Test) {
-    testClassesDirs = testing.suites.test.sources.output.classesDirs
-    classpath = testing.suites.test.sources.runtimeClasspath
-
     useJUnitPlatform {}
 
     testlogger {
@@ -38,15 +35,6 @@ tasks.register('unitTests', Test) {
     useJUnitPlatform {
         includeTags 'unit'
     }
-}
-
-
-// unitTest is legacy, remove when we changed the CI and all this and unitTest is no longer used
-tasks.register('unitTest') {
-    testClassesDirs = testing.suites.test.sources.output.classesDirs
-    classpath = testing.suites.test.sources.runtimeClasspath
-
-    dependsOn unitTests
 }
 
 tasks.register('itTests', Test) {

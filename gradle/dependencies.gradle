@@ -21,6 +21,8 @@ dependencies {
 
     testImplementation(
             "org.springframework.boot:spring-boot-starter-test",
+            "org.springframework.boot:spring-boot-webmvc-test",
+            "org.springframework.boot:spring-boot-starter-cache-test",
             "org.junit.jupiter:junit-jupiter-api",
             "org.junit.jupiter:junit-jupiter-params",
             "org.mockito:mockito-core:$mockitoVersion",

@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v6
       - name: Install libreoffice
         run: sudo apt update && sudo apt-get install -y libreoffice
       - name: Set up JDK 21
@@ -19,23 +19,23 @@ jobs:
           java-version: '21'
           distribution: 'adopt'
       - name: Build
-        uses: gradle/gradle-build-action@v2
+        uses: gradle/actions/setup-gradle@v3
         with:
           arguments: build -x test
       - name: Unit Tests
-        uses: gradle/gradle-build-action@v2
+        uses: gradle/actions/setup-gradle@v3
         with:
           arguments: unitTests
       - name: IT Tests
-        uses: gradle/gradle-build-action@v2
+        uses: gradle/actions/setup-gradle@v3
         with:
           arguments: itTests
 #      - name: E2E Tests
-#        uses: gradle/gradle-build-action@v2
+#        uses: gradle/actions/setup-gradle@v3
 #        with:
 #          arguments: e2eTests
       - name: Report
-        uses: dorny/test-reporter@v2.1.1
+        uses: dorny/test-reporter@v3
         if: always()
         with:
           name: Tests Results

@@ -1,4 +1,4 @@
-[![tests](https://github.com/EugenMayer/officeconverter/actions/workflows/tests.yml/badge.svg)](https://github.com/EugenMayer/officeconverter/actions/workflows/tests.yml)
+-b[![tests](https://github.com/EugenMayer/officeconverter/actions/workflows/tests.yml/badge.svg)](https://github.com/EugenMayer/officeconverter/actions/workflows/tests.yml)
 [![docker publish](https://github.com/EugenMayer/officeconverter/actions/workflows/docker-publish.yml/badge.svg)](https://github.com/EugenMayer/officeconverter/actions/workflows/docker-publish.yml)
 ## WAT
 

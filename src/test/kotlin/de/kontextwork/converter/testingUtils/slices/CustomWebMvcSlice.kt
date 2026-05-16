@@ -1,8 +1,8 @@
 package de.kontextwork.converter.testingUtils.slices
 
 import org.junit.jupiter.api.Tag
-import org.springframework.boot.test.autoconfigure.core.AutoConfigureCache
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest
+import org.springframework.boot.cache.test.autoconfigure.AutoConfigureCache
+import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest
 import org.springframework.core.annotation.AliasFor
 import kotlin.reflect.KClass
 

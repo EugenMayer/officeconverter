@@ -1,7 +1,7 @@
 ifdef RUNTIME_VERSION
     $(info RUNTIME_VERSION defined manually)
 else
-    RUNTIME_VERSION := 0.1.7
+    RUNTIME_VERSION := 1.0.0
 endif
 
 build: stop

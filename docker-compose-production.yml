@@ -3,7 +3,7 @@ version: "3"
 services:
   app:
     container_name: converter
-    image: ghcr.io/eugenmayer/kontextwork-converter:latest
+    image: ghcr.io/eugenmayer/kontextwork-converter:production
     security_opt:
       - 'no-new-privileges:true'
     mem_limit: 512M

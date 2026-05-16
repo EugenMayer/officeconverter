@@ -3,7 +3,7 @@ version: "3"
 services:
   app:
     container_name: converter-dev
-    image: ghcr.io/eugenmayer/kontextwork-converter:dev-latest
+    image: ghcr.io/eugenmayer/kontextwork-converter:development
     working_dir: /src
     entrypoint: ./gradlew
     command: -Pdev bootRun

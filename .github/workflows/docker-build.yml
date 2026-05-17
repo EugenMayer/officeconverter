@@ -1,4 +1,4 @@
-name: docker pr
+name: build
 
 on: push
 
@@ -30,7 +30,7 @@ jobs:
           target: production
           push: false
           tags: | 
-            ${{ env.IMAGE_FQDN }}:production
+            ${{ env.IMAGE_FQDN }}:production-snapshot-latest
           build-args: |
             VERSION=0.0.1-snapshot
             RUNTIME_VERSION=${{ env.RUNTIME_VERSION }}
@@ -42,7 +42,7 @@ jobs:
           target: development
           push: false
           tags: |
-            ${{ env.IMAGE_FQDN }}:development
+            ${{ env.IMAGE_FQDN }}:development-snapshot-latest
           build-args: |
             VERSION=0.0.1-snapshot
             RUNTIME_VERSION=${{ env.RUNTIME_VERSION }}

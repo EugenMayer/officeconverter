@@ -28,7 +28,7 @@ jobs:
           context: .
           platforms: linux/amd64
           target: production
-          push: false
+          push: true
           tags: | 
             ${{ env.IMAGE_FQDN }}:production-snapshot-latest
           build-args: |
@@ -40,7 +40,7 @@ jobs:
           context: .
           platforms: linux/amd64
           target: development
-          push: false
+          push: true
           tags: |
             ${{ env.IMAGE_FQDN }}:development-snapshot-latest
           build-args: |

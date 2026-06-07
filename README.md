@@ -52,7 +52,7 @@ spring:
       max-request-size: 5MB
 # change the server port (where the REST app is listenting)
 server:
-    portL: 8090
+    port: 8090
 ```
 
 ### Adding addition document formats

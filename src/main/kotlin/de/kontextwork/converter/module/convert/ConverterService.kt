@@ -28,6 +28,9 @@ class ConverterService(
                 "Cannot convert file with extension $extension since we cannot find the format in our registry"
             )
 
+        // We want to preserver the filename when creating the temporary file so macros that utilize the
+        // actual filename (word/excel) are not using a random temp-filename instead. Create a unique temporary folder
+        // and put save the file using the original filename
         val baseName = FilenameUtils.getBaseName(inputFileName)
         val tempWorkDir = Files.createTempDirectory("conv-").toFile()
         val tempSourceFile = tempWorkDir.resolve("$baseName.${sourceFormat.extension}")

@@ -16,7 +16,10 @@ dependencies {
 
             "org.jetbrains.kotlin:kotlin-reflect",
             "org.jetbrains.kotlin:kotlin-stdlib-jdk8",
-            "org.apache.logging.log4j:log4j-api-kotlin:$kotlinLog4j"
+            "org.apache.logging.log4j:log4j-api-kotlin:$kotlinLog4j",
+
+            // needed for OfficeManager annotations
+            "org.checkerframework:checker-qual:4.2.0"
     )
 
     testImplementation(

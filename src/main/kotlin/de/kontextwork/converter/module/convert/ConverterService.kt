@@ -17,6 +17,11 @@ import java.nio.file.Files
 class ConverterService(
     private val officeManager: OfficeManager
 ) {
+    private companion object {
+        const val FILTER_DATA = "FilterData"
+        const val SINGLE_PAGE_SHEETS = "SinglePageSheets"
+    }
+
     @Throws(UnknownSourceFormatException::class, OfficeException::class)
     @JvmOverloads
     fun doConvert(
@@ -123,12 +128,5 @@ class ConverterService(
 
         // If the above no-op task executed successfully, the application is ready
         return true
-    }
-
-    private companion object {
-        const val FILTER_DATA = "FilterData"
-
-        /** LibreOffice >= 7.0: export each sheet to exactly one page. */
-        const val SINGLE_PAGE_SHEETS = "SinglePageSheets"
     }
 }

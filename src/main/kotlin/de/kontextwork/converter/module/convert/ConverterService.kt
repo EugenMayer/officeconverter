@@ -89,6 +89,7 @@ class ConverterService(
         targetFormat: DocumentFormat,
         requested: Boolean?
     ): DocumentFormat {
+        // captures the following formats: xlsx, xltx, xls, ods, ots, fods, sxc, csv, tsv
         val isSpreadsheet = sourceFormat.inputFamily == DocumentFamily.SPREADSHEET
         val isPdfTarget = targetFormat.extension.equals("pdf", ignoreCase = true)
 

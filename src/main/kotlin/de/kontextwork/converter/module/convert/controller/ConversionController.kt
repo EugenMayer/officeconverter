@@ -30,7 +30,8 @@ class ConversionController(
     @Throws(IOException::class)
     fun convert(
         @RequestParam(name = "format", defaultValue = "pdf") targetFormatExt: String,
-        @RequestParam("file") inputMultipartFile: MultipartFile
+        @RequestParam("file") inputMultipartFile: MultipartFile,
+        @RequestParam("singlePageSheets", required = false) singlePageSheets: Boolean?,
     ): ResponseEntity<*> {
         val targetFormat = DefaultDocumentFormatRegistry.getFormatByExtension(targetFormatExt)
         if (targetFormat == null) {
@@ -42,7 +43,12 @@ class ConversionController(
         val inputFilename = fileNameUtils.extractFilenameOnly(inputMultipartFile.originalFilename!!)
 
         val convertedFile: ByteArrayOutputStream = try {
-            converterService.doConvert(targetFormat, inputMultipartFile.inputStream, inputFilename)
+            converterService.doConvert(
+                targetFormat,
+                inputMultipartFile.inputStream,
+                inputFilename,
+                singlePageSheets
+            )
         } catch (unknownSourceFormatException: UnknownSourceFormatException) {
             logger.error(unknownSourceFormatException.message!!)
             return ResponseEntity

@@ -7,6 +7,7 @@ dependencies {
             "org.jodconverter:jodconverter-spring-boot-starter:$jodconverterVersion",
             "org.springframework.boot:spring-boot-starter-web",
             "org.springframework.boot:spring-boot-starter-log4j2",
+            "org.springframework.boot:spring-boot-starter-actuator",
             "org.springframework:spring-core",
             "commons-io:commons-io:$commonsIo",
 

@@ -4,6 +4,12 @@ ARG RUNTIME_VERSION
 FROM amazoncorretto:25 as builder
 ARG VERSION=0.0.1-snapshot
 
+RUN dnf install -y binutils \
+ # the jdk/jre is missing ca certificate on corretto, install those
+ && dnf install -y ca-certificates \
+ && update-ca-trust \
+ && dnf clean all
+
 RUN mkdir -p /src
 COPY . /src
 WORKDIR /src

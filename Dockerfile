@@ -6,7 +6,7 @@ ARG VERSION=0.0.1-snapshot
 
 RUN dnf install -y binutils \
  # the jdk/jre is missing ca certificate on corretto, install those
- && dnf install -y ca-certificates \
+ && dnf install -y ca-certificates findutils \
  && update-ca-trust \
  && dnf clean all
 

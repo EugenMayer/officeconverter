@@ -1,6 +1,6 @@
 buildscript {
     // @see https://mvnrepository.com/artifact/org.jetbrains.kotlin/kotlin-gradle-plugin
-    ext.kotlin_version = '2.4.20'
+    ext.kotlin_version = '2.4.21'
     ext {
         // @see https://mvnrepository.com/artifact/org.jodconverter/jodconverter-local
         jodconverterVersion = '4.4.11'
@@ -9,7 +9,7 @@ buildscript {
         mockitoVersion = '5.24.0'
 
         // @see https://mvnrepository.com/artifact/org.apache.tika/tika-parsers
-        tikaVersion = '4.0.0'
+        tikaVersion = '4.2.0'
 
         // @see https://mvnrepository.com/artifact/commons-io/commons-io
         commonsIo = '2.22.0'
@@ -37,7 +37,7 @@ plugins {
 
     // @see https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web
     // changing that will upgrade spring to the corresponding version
-    id 'org.springframework.boot' version '4.1.1'
+    id 'org.springframework.boot' version '4.1.2'
 
     // much better output during running tests
     // see https://github.com/radarsh/gradle-test-logger-plugin for configuration options
@@ -47,9 +47,9 @@ plugins {
     id "org.sonarqube" version "7.5.0.8588"
 
     // @see https://plugins.gradle.org/plugin/org.jetbrains.kotlin.jvm
-    id "org.jetbrains.kotlin.jvm" version "2.4.20"
-    id "org.jetbrains.kotlin.plugin.allopen" version "2.4.20"
-    id "org.jetbrains.kotlin.plugin.spring" version "2.4.20"
+    id "org.jetbrains.kotlin.jvm" version "2.4.21"
+    id "org.jetbrains.kotlin.plugin.allopen" version "2.4.21"
+    id "org.jetbrains.kotlin.plugin.spring" version "2.4.21"
 }
 
 apply plugin: 'io.spring.dependency-management'
